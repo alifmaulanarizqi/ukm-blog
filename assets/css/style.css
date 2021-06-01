@@ -7,8 +7,8 @@ body {
   color: #fff;
 }
 
-.section-title h2 {
-    font-size: 32px;
+.section-title h3 {
+    font-size: 28px;
     color: #4d4643 !important;
     font-family: "Roboto", sans-serif;
     font-weight: bold;
@@ -18,7 +18,7 @@ body {
     position: relative;
 }
 
-.section-title h2::after {
+.section-title h3::after {
     content: '';
     position: absolute;
     display: block;
@@ -29,6 +29,9 @@ body {
     left: calc(50% - 25px);
 }
 
+a:hover {
+  text-decoration: none;
+}
 
 /* ----------------------------------
 Navbar
@@ -303,4 +306,36 @@ UKM
   position: absolute;
   bottom: 0;
   right: 5%;
+}
+
+/* ----------------------------------
+Post Terbaru
+---------------------------------- */
+.section-bg {
+  background-color: #f7f7f7;
+}
+
+.badge-custom {
+  background-color: #064ab8;
+  color: #eee;
+  padding: 5px;
+}
+
+a.badge-custom:hover {
+  color: #eee;
+  background-color: #042862;
+}
+
+.judul-post {
+  color: #262626;
+  font-weight: 600;
+}
+
+.judul-post:hover {
+  color: #064ab8;
+}
+
+.desc-post {
+  font-size: 15px;
+  color: #5c5c5c;
 }
