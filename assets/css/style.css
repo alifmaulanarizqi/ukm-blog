@@ -24,7 +24,7 @@ body {
     display: block;
     width: 50px;
     height: 3px;
-    background: #06337b;
+    background: #064ab8;
     bottom: 0;
     left: calc(50% - 25px);
 }
@@ -338,4 +338,29 @@ a.badge-custom:hover {
 .desc-post {
   font-size: 15px;
   color: #5c5c5c;
+}
+
+/* ----------------------------------
+Footer
+---------------------------------- */
+
+.footer {
+  background-color: #06337b;
+  font-size: 18px;
+}
+
+.footer-link {
+  color: #eee;
+  font-size: 14px;
+}
+
+.footer-link:hover {
+  color: #f8d800;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.copyright {
+  width: 100%;
+  border-top: 1px solid #f8f9fa;
 }
