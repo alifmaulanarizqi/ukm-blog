@@ -8,7 +8,7 @@ $(document).ready(function() {
   // custom navbar
   $(window).scroll(function(){
     let position = $(this).scrollTop();
-    if(position >= 200) {
+    if(position >= 80) {
       $('.nav-menu').addClass('custom-navbar');
     } else {
       $('.nav-menu').removeClass('custom-navbar');

@@ -5,6 +5,7 @@ General
 body {
   font-family: "Open Sans", sans-serif;
   color: #fff;
+  font-size: 16px;
 }
 
 .section-title h3 {
@@ -451,8 +452,12 @@ UKM Home Section
 ---------------------------------- */
 
 #profileUkm {
-  margin-top: 150px;
-  margin-bottom: 50px;
+  margin-top: 150px !important;
+  margin-bottom: 50px !important;
+}
+
+.margin-after-navbar {
+  margin-top: 150px !important;
 }
 
 .container-profile {
@@ -509,6 +514,12 @@ UKM Home Section
 /* ----------------------------------
 UKM Section
 ---------------------------------- */
+
+@media only screen and (max-width: 992px) {
+  .padding-sidebar {
+    padding-left: 0 !important;
+  }
+}
 
 .sidebar-container {
   width: 100%;
@@ -639,8 +650,35 @@ a.badge-custom:hover {
 }
 
 .desc-post {
-  font-size: 15px;
   color: #5c5c5c;
+}
+
+/* ----------------------------------
+Post
+---------------------------------- */
+.post-container {
+  width: 100%;
+  background-color: #fff;
+  margin: auto;
+  color: #4d4643;
+  box-shadow: 0px 2px 15px rgb(0 0 0 / 10%);
+  padding: 25px;
+}
+
+@media only screen and (max-width: 992px) {
+  .padding-post {
+    padding-right: 0;
+  }
+}
+
+.author-date-post ul {
+  padding-left: 0;
+}
+
+.author-date-post ul li {
+  display: inline;
+  color: #939393;
+  font-size: 14px;
 }
 
 /* ----------------------------------
@@ -649,13 +687,11 @@ Footer
 
 .footer {
   background-color: #1e1e1e;
-  font-size: 18px;
   color: #c5c5c5;
 }
 
 .footer-link {
   color: #8e8e8e;
-  font-size: 14px;
 }
 
 .footer-link:hover {
@@ -671,7 +707,6 @@ Footer
 .copyright {
   width: 100%;
   border-top: 1px solid #f8f9fa;
-  font-size: 14px;
 }
 
 /* ----------------------------------
