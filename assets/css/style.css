@@ -345,22 +345,48 @@ Footer
 ---------------------------------- */
 
 .footer {
-  background-color: #06337b;
+  background-color: #1e1e1e;
   font-size: 18px;
+  color: #c5c5c5;
 }
 
 .footer-link {
-  color: #eee;
+  color: #8e8e8e;
   font-size: 14px;
 }
 
 .footer-link:hover {
-  color: #f8d800;
+  color: #eee;
   text-decoration: none;
   transition: all 0.3s;
+}
+
+.fa-angle-right {
+  color: #e8da7a;
 }
 
 .copyright {
   width: 100%;
   border-top: 1px solid #f8f9fa;
+  font-size: 14px;
+}
+
+/* ----------------------------------
+Login
+---------------------------------- */
+
+.form-text {
+  color: #5c5c5c;
+  font-size: 13px;
+}
+
+.form-text h4::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #064ab8;
+    top: 65px;
+    left: 50px;
 }
