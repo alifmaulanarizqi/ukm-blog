@@ -107,7 +107,7 @@ Navbar
 }
 
 /* ----------------------------------
-Hero
+Hero Halaman Utama
 ---------------------------------- */
 #hero {
   width: 100%;
@@ -273,7 +273,310 @@ Hero
 }
 
 /* ----------------------------------
-UKM
+Hero Halaman UKM
+---------------------------------- */
+#heroUkm {
+  width: 80%;
+  height: 80vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  position: relative;
+  margin: auto;
+}
+
+@media (max-width: 768px) {
+  #heroUkm {
+    width: 100%;
+    height: 100vh;
+  }
+}
+
+#heroUkm .carousel, #heroUkm .carousel-inner, #heroUkm .carousel-item, #heroUkm .carousel-item::before {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+
+#heroUkm .carousel-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  position: absolute;
+  bottom: 60px;
+  top: 70px;
+  left: 55px;
+  right: 55px;
+}
+
+#heroUkm .carousel-content {
+  background: rgba(4, 4, 4, 0.7);
+  padding: 20px;
+  color: #fff;
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  border-top: 5px solid #edcf00;
+}
+
+#heroUkm .carousel-content h2 {
+  color: #fff;
+  margin-bottom: 20px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+#heroUkm .btn-more {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: 4px;
+  transition: 0.5s;
+  line-height: 1;
+  margin: 10px;
+  color: #fff;
+  -webkit-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+  border: 2px solid #edcf00;
+}
+
+#heroUkm .btn-more:hover {
+  background: #f8d800;
+  color: #fff;
+  text-decoration: none;
+}
+
+#heroUkm .carousel-inner .carousel-item {
+  transition-property: opacity;
+  background-position: center top;
+}
+
+#heroUkm .carousel-inner .carousel-item,
+#heroUkm .carousel-inner .active.carousel-item-left,
+#heroUkm .carousel-inner .active.carousel-item-right {
+  opacity: 0;
+}
+
+#heroUkm .carousel-inner .active,
+#heroUkm .carousel-inner .carousel-item-next.carousel-item-left,
+#heroUkm .carousel-inner .carousel-item-prev.carousel-item-right {
+  opacity: 1;
+  transition: 0.5s;
+}
+
+#heroUkm .carousel-inner .carousel-item-next,
+#heroUkm .carousel-inner .carousel-item-prev,
+#heroUkm .carousel-inner .active.carousel-item-left,
+#hero .carousel-inner .active.carousel-item-right {
+  left: 0;
+  transform: translate3d(0, 0, 0);
+}
+
+#heroUkm .carousel-control-prev, #heroUkm .carousel-control-next {
+  width: 10%;
+  opacity: 1;
+}
+
+#heroUkm .carousel-control-next-icon, #heroUkm .carousel-control-prev-icon {
+  background: none;
+  font-size: 36px;
+  line-height: 1;
+  width: auto;
+  height: auto;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  padding: 10px;
+  transition: 0.3s;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+#heroUkm .carousel-control-next-icon:hover, #heroUkm .carousel-control-prev-icon:hover {
+  background: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#heroUkm .carousel-indicators li {
+  cursor: pointer;
+  background: #fff;
+  overflow: hidden;
+  border: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50px;
+  opacity: .6;
+  transition: 0.3s;
+}
+
+#heroUkm .carousel-indicators li.active {
+  opacity: 1;
+  background: #edcf00;
+}
+
+@media (min-width: 1024px) {
+  #heroUkm .carousel-content {
+    width: 60%;
+  }
+  #heroUkm .carousel-control-prev, #heroUkm .carousel-control-next {
+    width: 5%;
+  }
+}
+
+@media (max-width: 992px) {
+  #heroUkm .carousel-container {
+    top: 58px;
+  }
+  #heroUkm .carousel-content h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+  }
+  #heroUkm .carousel-content p {
+    font-size: 15px;
+  }
+}
+
+@media (max-height: 500px) {
+  #heroUkm {
+    height: 120vh;
+  }
+}
+
+/* ----------------------------------
+UKM Home Section
+---------------------------------- */
+
+#profileUkm {
+  margin-top: 150px;
+  margin-bottom: 50px;
+}
+
+.container-profile {
+  width: 80%;
+  background-color: #fff;
+  margin: auto;
+  border-radius: 20px;
+  box-shadow: 1px 1px 15px 3px #e0e0e0;
+}
+
+@media (max-width: 768px) {
+  .container-profile {
+    width: 95%;
+  }
+}
+
+.section-bg-ukm {
+  background-color: #fff;
+  width: 80%;
+  margin: auto;
+}
+
+.ukm-profile-img {
+  display: inline-block;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 30px 0 20px 30px;
+}
+
+.ukm-profile-img img {
+  width: auto;
+  height: 100%;
+}
+
+.ukm-profile-text {
+  font-size: 14px;
+  color: #4d4643;
+}
+
+.section-title .section-title-ukm-home::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: #064ab8;
+    bottom: 0;
+    left: 0;
+}
+
+/* ----------------------------------
+UKM Section
+---------------------------------- */
+
+.sidebar-container {
+  width: 100%;
+  background-color: #fff;
+  margin: auto;
+  color: #4d4643;
+  box-shadow: 0px 2px 15px rgb(0 0 0 / 10%);
+  padding: 35px;
+}
+
+.sidebar-part .categories ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.categories ul li {
+  margin-top: 8px;
+}
+
+.categories ul li a {
+  color: #4d4643;
+}
+
+.categories ul li a:hover {
+  color: #06337b;
+}
+
+.livetv {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+}
+
+.livetv iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.social-media-ukm a {
+  font-size: 14px;
+  display: inline-block;
+  background: rgb(140, 140, 140);
+  color: #fff;
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 4px;
+  border-radius: 10px;
+  text-align: center !important;
+  width: 45px;
+  height: 45px;
+  transition: 0.3s;
+}
+
+.social-media-ukm a:hover {
+  background: #064ab8;
+  color: #fff;
+  text-decoration: none;
+}
+
+/* ----------------------------------
+UKM Section
 ---------------------------------- */
 
 .container-img {
