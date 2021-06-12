@@ -8,8 +8,11 @@ body {
   font-size: 16px;
 }
 
-.section-title h3 {
-    font-size: 28px;
+.btn {
+  font-size: 13px;
+}
+
+.section-title h3, .section-title h4{
     color: #4d4643 !important;
     font-family: "Roboto", sans-serif;
     font-weight: bold;
@@ -19,7 +22,7 @@ body {
     position: relative;
 }
 
-.section-title h3::after {
+.section-title h3::after, .section-title h4::after {
     content: '';
     position: absolute;
     display: block;
@@ -32,6 +35,18 @@ body {
 
 a:hover {
   text-decoration: none;
+}
+
+.section-bg-ukm {
+  background-color: #fff;
+  width: 80%;
+  margin: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .section-bg-ukm {
+    width: 90%;
+  }
 }
 
 /* ----------------------------------
@@ -469,12 +484,6 @@ UKM Home Section
   }
 }
 
-.section-bg-ukm {
-  background-color: #fff;
-  width: 80%;
-  margin: auto;
-}
-
 .ukm-profile-img {
   display: inline-block;
   position: relative;
@@ -733,6 +742,12 @@ Breadcrumb
   margin: auto;
   margin-top: 100px !important;
   margin-bottom: 20px !important;
+}
+
+@media only screen and (max-width: 768px) {
+  #breadcrumb {
+    width: 90%;
+  }
 }
 
 #breadcrumb .breadcrumb {

@@ -66,115 +66,54 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">UKM Apa Gitu</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Travel</li>
+        <li class="breadcrumb-item active" aria-current="page">Buka UKM</li>
       </ol>
     </nav>
   </section>
 
-    <div class="row section-bg-ukm">
-      <!-- ======= Konten ======= -->
-      <div class="col-lg-8 col-12 pl-0">
+  <div class="row section-bg-ukm margin-after-navbar">
+    <!-- ======= Konten ======= -->
+    <div class="col-12 pl-0 padding-post">
 
-        <!-- ======= Post Terbaru Section ======= -->
-        <section class="pb-lg-5">
-          <div class="">
+      <div class="section-title">
+        <h4 class="font-weight-bold section-title-ukm-home">Buka UKM</h4>
+      </div>
 
-            <div class="section-title">
-              <h4 class="font-weight-bold section-title-ukm-home">Kategori Travel</h4>
-            </div>
-
-            <div class="row mt-4 text-left">
-
-              <div class="col-sm-6 col-lg-4 my-3">
-                <a href="#">
-                  <img src="assets/images/Screenshot376.png" class="img-fluid" alt="">
-                </a>
-                <span class="badge badge-custom my-3">Author</span>
-                <small class="ml-2 text-dark">6 Juni 2021</small>
-                <a href="#"><h5 class="judul-post">Artikel Satu</h5></a>
-                <p class="desc-post">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est, nemo!</p>
+      <!-- ======= Form Buka UKM ======= -->
+      <section class="pb-lg-5 mt-4">
+          <div class="post-container mb-5 mb-lg-3">
+            <form action="" method="post" class="form-text">
+              <div class="form-group">
+                <label for="ukm_name" class="font-weight-bold">Nama UKM</label>
+                <input type="text" name="ukm_name" class="form-control" id="ukm_name" placeholder="Masukan nama UKM">
               </div>
-              <div class="col-sm-6 col-lg-4 my-3">
-                <a href="#">
-                  <img src="assets/images/Screenshot376.png" class="img-fluid" alt="">
-                </a>
-                <span class="badge badge-custom my-3">Author</span>
-                <small class="ml-2 text-dark">6 Juni 2021</small>
-                <a href="#"><h5 class="judul-post">Artikel Satu</h5></a>
-                <p class="desc-post">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est, nemo!</p>
+              <div class="form-group">
+                <label for="descriptiion" class="font-weight-bold">Deskripsi UKM</label>
+                <textarea name="descriptiion" id="descriptiion" class="form-control" rows="4" placeholder="Masukan deskripsi mengenai UKM"></textarea>
               </div>
-              <div class="col-sm-6 col-lg-4 my-3">
-                <a href="#">
-                  <img src="assets/images/Screenshot376.png" class="img-fluid" alt="">
-                </a>
-                <span class="badge badge-custom my-3">Author</span>
-                <small class="ml-2 text-dark">6 Juni 2021</small>
-                <a href="#"><h5 class="judul-post">Artikel Satu</h5></a>
-                <p class="desc-post">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est, nemo!</p>
+              <div class="form-group">
+                <label for="leader" class="font-weight-bold">Nama Akun</label>
+                <input type="text" name="leader" class="form-control" id="leader" placeholder="Masukan nama pendaftar atau ketua">
               </div>
-              <div class="col-sm-6 col-lg-4 my-3">
-                <a href="#">
-                  <img src="assets/images/Screenshot376.png" class="img-fluid" alt="">
-                </a>
-                <span class="badge badge-custom my-3">Author</span>
-                <small class="ml-2 text-dark">6 Juni 2021</small>
-                <a href="#"><h5 class="judul-post">Artikel Satu</h5></a>
-                <p class="desc-post">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est, nemo!</p>
+              <div class="form-group">
+                <label for="email" class="font-weight-bold">Email Akun</label>
+                <input type="email" name="email" class="form-control" id="email" placeholder="Masukan email pendaftar atau ketua">
               </div>
-              <div class="col-sm-6 col-lg-4 my-3">
-                <a href="#">
-                  <img src="assets/images/Screenshot376.png" class="img-fluid" alt="">
-                </a>
-                <span class="badge badge-custom my-3">Author</span>
-                <small class="ml-2 text-dark">6 Juni 2021</small>
-                <a href="#"><h5 class="judul-post">Artikel Satu</h5></a>
-                <p class="desc-post">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est, nemo!</p>
+              <div class="form-group">
+                <label for="password" class="font-weight-bold">Password Akun</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Masukan password">
               </div>
-
-            </div>
-
+              <div class="form-group">
+                <label for="password_confirmation" class="font-weight-bold">Konfirmasi Password</label>
+                <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="Masukan ulang password">
+              </div>
+              <button type="submit" class="btn btn-primary">Buka UKM</button>
+            </form>
           </div>
-        </section><!-- End Post Terbaru Section -->
-      </div> <!-- End Konten -->
+      </section><!-- End Form Buka UKM -->
 
-      <!-- ======= Sidebar ======= -->
-      <div class="col-lg-4 col-12 pr-0 mb-5 padding-sidebar">
-        <section id="sidebar" class="">
-          <div class="sidebar-container">
-            <div class="sidebar-part">
-              <h5 class="font-weight-bold">Kategori</h5>
-              <div class="categories">
-                <ul>
-                  <li><a href="#">General <span>(25)</span></a></li>
-                  <li><a href="#">Lifestyle <span>(12)</span></a></li>
-                  <li><a href="#">Travel <span>(5)</span></a></li>
-                  <li><a href="#">Design <span>(22)</span></a></li>
-                  <li><a href="#">Creative <span>(8)</span></a></li>
-                  <li><a href="#">Educaion <span>(14)</span></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="sidebar-part mt-4">
-              <h5 class="font-weight-bold">Live TV</h5>
-              <div class="livetv">
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/msBvP4gwmnc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              </div>
-            </div>
-            <div class="sidebar-part mt-4">
-              <h5 class="font-weight-bold">Sosial Media</h5>
-              <div class="social-media-ukm">
-                <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
-                <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
-                <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
-                <a href="#"><i class="fab fa-youtube fa-2x"></i></a>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div><!-- End Sidebar -->
-    </div>
-
+    </div> <!-- End Konten -->
+  </div>
 
     <!-- ======= Footer ======= -->
     <footer class="px-5 footer">
