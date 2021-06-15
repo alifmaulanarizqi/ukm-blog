@@ -29,7 +29,7 @@
           <a href="{{ route('buka.ukm') }}" class="nav-link m-2 menu-item">Buka UKM</a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('login') }}" class="nav-link m-2 menu-item">Login</a>
+          <a href="{{ route('login') }}" target="_blank" class="nav-link m-2 menu-item">Login</a>
         </li>
       </ul>
     </div>

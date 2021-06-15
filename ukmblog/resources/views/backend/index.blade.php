@@ -1,4 +1,4 @@
-@extends('user.user_master')
+@extends('backend.user_master')
 
 @section('user')
 

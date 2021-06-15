@@ -2,10 +2,10 @@
   <div id="sidebar" class="sidebar sidebar-with-footer">
     <!-- Aplication Brand -->
     <div class="app-brand sidebar-logo">
-      <a href="{{ url('/dev/dashboard') }}">
+      <a href="{{ url('/dashboard') }}">
          <p class="navbar-brand mr-0"><span class="font-weight-bold">UKM</span></p>
         </svg>
-        <span class="brand-name ml-0">BLOG - Developer</span>
+        <span class="brand-name ml-0">BLOG - User</span>
       </a>
     </div>
     <!-- begin sidebar scrollbar -->
@@ -15,14 +15,14 @@
       <ul class="nav sidebar-inner" id="sidebar-menu">
 
           <li  class="has-sub active expand" >
-            <a class="sidenav-item-link" href="{{ url('/dev/dashboard') }}" data-toggle="collapse" data-target="#dashboard"
+            <a class="sidenav-item-link" href="{{ url('/dashboard') }}" data-toggle="collapse" data-target="#dashboard"
               aria-expanded="false" aria-controls="dashboard">
               <i class="mdi mdi-view-dashboard-outline"></i>
               <span class="nav-text">Dashboard</span>
             </a>
           </li>
 
-          <li  class="has-sub" >
+          <!-- <li  class="has-sub" >
             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#ukm"
               aria-expanded="false" aria-controls="ukm">
               <i class="mdi mdi-folder-multiple-outline"></i>
@@ -39,7 +39,7 @@
                 </li>
 
                 <li  class="has-sub" >
-                  <a class="sidenav-item-link" href="{{ route('ukm.pendaftar') }}">
+                  <a class="sidenav-item-link" href="">
                     <span class="nav-text">UKM Pendaftar</span>
                   </a>
                 </li>
@@ -242,7 +242,7 @@
 
               </div>
             </ul>
-          </li>
+          </li> -->
 
       </ul>
 

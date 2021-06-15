@@ -23,6 +23,8 @@
   <!-- SLEEK CSS -->
   <link id="sleek-css" rel="stylesheet" href="{{ asset('backend_assets/assets/css/sleek.css') }}" />
 
+
+
   <!-- FAVICON -->
   <link href="{{ asset('backend_assets/assets/img/favicon.png') }}" rel="shortcut icon" />
 
@@ -49,20 +51,20 @@
     <div class="wrapper">
 
       <!-- Sidebar -->
-      @include('dev.body.sidebar')
+      @include('backend.body.sidebar')
 
       <div class="page-wrapper">
 
-        <!-- Header -->
-        @include('dev.body.header')
+          <!-- Header -->
+          @include('backend.body.header')
 
-        <!-- Content -->
-        <div class="content-wrapper">
-            @yield('dev')
-        </div>
 
-        <!-- Footer -->
-        @include('dev.body.footer')
+          <div class="content-wrapper">
+              @yield('user')
+          </div>
+
+          <!--  -->
+          @include('backend.body.footer')
 
       </div>
     </div>
@@ -82,11 +84,15 @@
 <script src="{{ asset('backend_assets/assets/plugins/jvectormap/jquery-jvectormap-world-mill.js') }}"></script>
 <script src="{{ asset('backend_assets/assets/plugins/daterangepicker/moment.min.js') }}"></script>
 <script src="{{ asset('backend_assets/assets/plugins/daterangepicker/daterangepicker.js') }}"></script>
+<script src="{{ asset('backend_assets/assets/plugins/jekyll-search.min.js') }}"></script>
 <script src="{{ asset('backend_assets/assets/js/sleek.js') }}"></script>
 <script src="{{ asset('backend_assets/assets/js/chart.js') }}"></script>
 <script src="{{ asset('backend_assets/assets/js/date-range.js') }}"></script>
 <script src="{{ asset('backend_assets/assets/js/map.js') }}"></script>
 <script src="{{ asset('backend_assets/assets/js/custom.js') }}"></script>
+
+
+
 
   </body>
 </html>

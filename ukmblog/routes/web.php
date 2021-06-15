@@ -1,8 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\Dev\UkmController;
+use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Frontend\ExtraController;
 use App\Http\Controllers\Frontend\UkmPendaftarController;
 
@@ -22,7 +21,7 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {
-    return view('user.index');
+    return view('backend.index');
 })->name('dashboard');
 
 
