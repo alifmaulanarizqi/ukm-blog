@@ -14,6 +14,10 @@
   <link href="{{ asset('frontend_template/assets/vendor/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
   <link href="{{ asset('frontend_template/assets/vendor/aos/aos.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="{{ asset('frontend_template/assets/css/style.css') }}">
+
+  <!-- Toastr -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" />
+
   <title>UKM Blog</title>
 </head>
 
@@ -34,6 +38,29 @@
   <script src="{{ asset('frontend_template/assets/vendor/owl.carousel/owl.carousel.min.js') }}"></script>
   <script src="{{ asset('frontend_template/assets/vendor/aos/aos.js') }}"></script>
   <script src="{{ asset('frontend_template/assets/script/script.js') }}"></script>
+
+  <!-- Toastr -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
+  <script>
+      @if(Session::has('message'))
+          var type = "{{ Session::get('alert-type', 'info') }}"
+          switch (type) {
+              case 'info':
+                  toastr.info("{{ Session::get('message') }}");
+                  break;
+              case 'success':
+                  toastr.success("{{ Session::get('message') }}");
+                  break;
+              case 'warning':
+                  toastr.warning("{{ Session::get('message') }}");
+                  break;
+              case 'error':
+                  toastr.error("{{ Session::get('message') }}");
+                  break;
+          }
+      @endif
+  </script>
+
   </body>
 
   </html>

@@ -9,25 +9,17 @@
       <ul class="nav navbar-nav">
 
         <!-- User Account -->
-        @php
-            use Illuminate\Support\Facades\Auth;
-            use App\Models\Dev;
-
-            $dev_id = Auth::id();
-            $dev = Dev::find($dev_id);
-        @endphp
-
         <li class="dropdown user-menu">
           <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
             <img src="{{ asset('backend_assets/assets/img/user/user.png') }}" class="user-image" alt="User Image" />
-            <span class="d-none d-lg-inline-block">{{ $dev->name }}</span>
+            <span class="d-none d-lg-inline-block">{{ Auth::user()->name }}</span>
           </button>
           <ul class="dropdown-menu dropdown-menu-right">
             <!-- User image -->
             <li class="dropdown-header">
               <img src="{{ asset('backend_assets/assets/img/user/user.png') }}" class="img-circle" alt="User Image" />
               <div class="d-inline-block">
-                {{ $dev->name }} <small class="pt-1">{{ $dev->email }}</small>
+                {{ Auth::user()->name }} <small class="pt-1">{{ Auth::user()->email }}</small>
               </div>
             </li>
 

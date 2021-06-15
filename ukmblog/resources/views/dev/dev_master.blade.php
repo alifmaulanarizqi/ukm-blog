@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Sleek - Admin Dashboard Template</title>
+  <title>UKM Blog | Dashboard</title>
 
   <!-- GOOGLE FONTS -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500" rel="stylesheet"/>
@@ -22,8 +22,6 @@
 
   <!-- SLEEK CSS -->
   <link id="sleek-css" rel="stylesheet" href="{{ asset('backend_assets/assets/css/sleek.css') }}" />
-
-
 
   <!-- FAVICON -->
   <link href="{{ asset('backend_assets/assets/img/favicon.png') }}" rel="shortcut icon" />
@@ -84,15 +82,11 @@
 <script src="{{ asset('backend_assets/assets/plugins/jvectormap/jquery-jvectormap-world-mill.js') }}"></script>
 <script src="{{ asset('backend_assets/assets/plugins/daterangepicker/moment.min.js') }}"></script>
 <script src="{{ asset('backend_assets/assets/plugins/daterangepicker/daterangepicker.js') }}"></script>
-<script src="{{ asset('backend_assets/assets/plugins/jekyll-search.min.js') }}"></script>
 <script src="{{ asset('backend_assets/assets/js/sleek.js') }}"></script>
 <script src="{{ asset('backend_assets/assets/js/chart.js') }}"></script>
 <script src="{{ asset('backend_assets/assets/js/date-range.js') }}"></script>
 <script src="{{ asset('backend_assets/assets/js/map.js') }}"></script>
 <script src="{{ asset('backend_assets/assets/js/custom.js') }}"></script>
-
-
-
 
   </body>
 </html>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDevsTable extends Migration
+class CreateUkmPendaftarsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateDevsTable extends Migration
      */
     public function up()
     {
-        Schema::create('devs', function (Blueprint $table) {
+        Schema::create('ukm_pendaftars', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('ukm_name');
+            $table->text('description');
+            $table->string('leader');
+            $table->string('email');
             $table->string('password');
-            $table->rememberToken();
-            $table->foreignId('current_team_id')->nullable();
-            $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ class CreateDevsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('devs');
+        Schema::dropIfExists('ukm_pendaftars');
     }
 }

@@ -27,7 +27,7 @@
                   </div>
               @endif
 
-              <form action="{{ isset($guard) ? url($guard.'/login') : route('login') }}" method="post" class="">
+              <form action="{{ route('login') }}" method="post">
                 @csrf
                 <div class="form-group">
                   <label for="email" class="font-weight-bold">Email</label>

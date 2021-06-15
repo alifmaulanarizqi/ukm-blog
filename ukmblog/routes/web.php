@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DevController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\Backend\MainDevController;
+use App\Http\Controllers\Dev\UkmController;
+use App\Http\Controllers\Frontend\ExtraController;
+use App\Http\Controllers\Frontend\UkmPendaftarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,25 +21,21 @@ Route::get('/', function () {
     return view('main.index');
 });
 
-Route::group(['prefix' => 'dev', 'middleware' => ['dev:dev']], function() {
-    Route::get('/login', [DevController::class, 'loginForm']);
-    Route::post('/login', [DevController::class, 'store'])->name('dev.login');
-});
-
-Route::middleware(['auth:sanctum,dev', 'verified'])->get('/dev/dashboard', function () {
-    return view('dev.index');
-})->name('dashboard');
-
-Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {
     return view('user.index');
 })->name('dashboard');
+
+
+//*=============== FRONTEND ===============*//
+Route::get('/ukm/nama-ukm', [ExtraController::class, 'halamanUkm'])->name('hal.ukm');
+Route::get('/daftar-ukm', [ExtraController::class, 'daftarUkm'])->name('daftar.ukm');
+Route::get('/buka-ukm', [ExtraController::class, 'bukaUkm'])->name('buka.ukm');
+
+// pendaftaran ukm
+Route::post('/pendaftaran-ukm', [UkmPendaftarController::class, 'pendaftaranUkm'])->name('pendaftaran.ukm');
+
 
 
 //*=============== USER ===============*//
 // logout
 Route::get('/user/logout', [UserController::class, 'logout'])->name('user.logout');
-
-
-//*=============== DEV ===============*//
-// logout
-Route::get('/dev/logout', [DevController::class, 'destroy'])->name('dev.logout');
