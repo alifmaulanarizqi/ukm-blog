@@ -12,34 +12,38 @@
     <div class="sidebar-scrollbar">
 
       <!-- sidebar menu -->
+      @php
+          $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+          $urlParts = explode('/', str_ireplace(array('http://', 'https://'), '', $actual_link));
+      @endphp
+
       <ul class="nav sidebar-inner" id="sidebar-menu">
 
-          <li  class="has-sub active expand" >
-            <a class="sidenav-item-link" href="{{ url('/dashboard') }}" data-toggle="collapse" data-target="#dashboard"
-              aria-expanded="false" aria-controls="dashboard">
+          <li class="has-sub <?php if($urlParts[1] == 'dashboard') echo "active expand"; ?>">
+            <a class="sidenav-item-link" href="{{ route('dashboard') }}">
               <i class="mdi mdi-view-dashboard-outline"></i>
               <span class="nav-text">Dashboard</span>
             </a>
           </li>
 
-          <!-- <li  class="has-sub" >
+          <li class="has-sub <?php if($urlParts[1] == 'ukm') echo "active expand"; ?>">
             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#ukm"
               aria-expanded="false" aria-controls="ukm">
               <i class="mdi mdi-folder-multiple-outline"></i>
               <span class="nav-text">UKM</span> <b class="caret"></b>
             </a>
-            <ul  class="collapse"  id="ukm"
+            <ul class="collapse <?php if($urlParts[1] == 'ukm') echo "show"; ?>" id="ukm"
               data-parent="#sidebar-menu">
               <div class="sub-menu">
 
-                <li  class="has-sub" >
-                  <a class="sidenav-item-link" href="javascript:void(0)">
+                <li class="<?php if(!empty($urlParts[2])) { if($urlParts[1] == 'ukm') { if($urlParts[2] == 'all') echo "active"; }  } ?>">
+                  <a class="sidenav-item-link" href="{{ route('ukm.semua') }}">
                     <span class="nav-text">Semua UKM</span>
                   </a>
                 </li>
 
-                <li  class="has-sub" >
-                  <a class="sidenav-item-link" href="">
+                <li class="<?php if(!empty($urlParts[2])) { if($urlParts[1] == 'ukm') { if($urlParts[2] == 'pendaftar') echo "active"; }  } ?>">
+                  <a class="sidenav-item-link" href="{{ route('ukm.pendaftar') }}">
                     <span class="nav-text">UKM Pendaftar</span>
                   </a>
                 </li>
@@ -48,201 +52,70 @@
             </ul>
           </li>
 
-          <li  class="has-sub" >
-            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#charts"
-              aria-expanded="false" aria-controls="charts">
-              <i class="mdi mdi-chart-pie"></i>
-              <span class="nav-text">Charts</span> <b class="caret"></b>
+          <li class="has-sub <?php if($urlParts[1] == 'kategori') echo "active expand"; ?>">
+            <a class="sidenav-item-link" href="{{ route('kategori') }}">
+              <i class="mdi mdi-text-subject"></i>
+              <span class="nav-text">Kategori</span>
             </a>
-            <ul  class="collapse"  id="charts"
+          </li>
+
+          <li class="has-sub <?php if($urlParts[1] == 'post') echo "active expand"; ?>">
+            <a class="sidenav-item-link" href="{{ route('post') }}">
+              <i class="mdi mdi-folder-edit"></i>
+              <span class="nav-text">Post</span>
+            </a>
+          </li>
+
+          <li class="has-sub <?php if($urlParts[1] == 'anggota') echo "active expand"; ?>">
+            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#user"
+              aria-expanded="false" aria-controls="user">
+              <i class="mdi mdi-account"></i>
+              <span class="nav-text">User</span> <b class="caret"></b>
+            </a>
+            <ul class="collapse <?php if($urlParts[1] == 'anggota') echo "show"; ?>" id="user"
               data-parent="#sidebar-menu">
               <div class="sub-menu">
-
-                    <li >
-                      <a class="sidenav-item-link" href="chartjs.html">
-                        <span class="nav-text">ChartJS</span>
-
+                    <li class="<?php if(!empty($urlParts[2])) { if($urlParts[1] == 'anggota') { if($urlParts[2] == 'all') echo "active"; }  } ?>">
+                      <a class="sidenav-item-link" href="{{ route('anggota.ukm') }}">
+                        <span class="nav-text">Anggota</span>
                       </a>
                     </li>
-
+                    <li class="<?php if(!empty($urlParts[2])) { if($urlParts[1] == 'anggota') { if($urlParts[2] == 'pendaftar') echo "active"; }  } ?>">
+                      <a class="sidenav-item-link" href="{{ route('pendaftar.ukm') }}">
+                        <span class="nav-text">Pendaftar</span>
+                      </a>
+                    </li>
               </div>
             </ul>
           </li>
 
-          <li  class="has-sub" >
-            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#pages"
-              aria-expanded="false" aria-controls="pages">
-              <i class="mdi mdi-image-filter-none"></i>
-              <span class="nav-text">Pages</span> <b class="caret"></b>
+          <li class="has-sub <?php if($urlParts[1] == 'pengaturan') echo "active expand"; ?>">
+            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#pengaturan"
+              aria-expanded="false" aria-controls="pengaturan">
+              <i class="mdi mdi-settings"></i>
+              <span class="nav-text">Pengaturan</span> <b class="caret"></b>
             </a>
-            <ul  class="collapse"  id="pages"
+            <ul class="collapse <?php if($urlParts[1] == 'pengaturan') echo "show"; ?>" id="pengaturan"
               data-parent="#sidebar-menu">
               <div class="sub-menu">
-
-                    <li >
-                      <a class="sidenav-item-link" href="user-profile.html">
-                        <span class="nav-text">User Profile</span>
-
+                    <li class="<?php if(!empty($urlParts[2])) { if($urlParts[1] == 'pengaturan') { if($urlParts[2] == 'livetv') echo "active"; }  } ?>">
+                      <a class="sidenav-item-link" href="{{ route('pengaturan.livetv') }}">
+                        <span class="nav-text">Live Tv</span>
                       </a>
                     </li>
-
-                <li  class="has-sub" >
-                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#authentication"
-                    aria-expanded="false" aria-controls="authentication">
-                    <span class="nav-text">Authentication</span> <b class="caret"></b>
-                  </a>
-                  <ul  class="collapse"  id="authentication">
-                    <div class="sub-menu">
-
-                      <li >
-                        <a href="sign-in.html">Sign In</a>
-                      </li>
-
-                      <li >
-                        <a href="sign-up.html">Sign Up</a>
-                      </li>
-
-                    </div>
-                  </ul>
-                </li>
-
-                <li  class="has-sub" >
-                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#others"
-                    aria-expanded="false" aria-controls="others">
-                    <span class="nav-text">Others</span> <b class="caret"></b>
-                  </a>
-                  <ul  class="collapse"  id="others">
-                    <div class="sub-menu">
-
-                      <li >
-                        <a href="invoice.html">invoice</a>
-                      </li>
-
-                      <li >
-                        <a href="error.html">Error</a>
-                      </li>
-
-                    </div>
-                  </ul>
-                </li>
-
+                    <li class="<?php if(!empty($urlParts[2])) { if($urlParts[1] == 'pengaturan') { if($urlParts[2] == 'sosial-media') echo "active"; }  } ?>">
+                      <a class="sidenav-item-link" href="{{ route('pengaturan.sosial') }}">
+                        <span class="nav-text">Sosial Media</span>
+                      </a>
+                    </li>
+                    <li class="<?php if(!empty($urlParts[2])) { if($urlParts[1] == 'pengaturan') { if($urlParts[2] == 'buka-pendaftaran') echo "active"; }  } ?>">
+                      <a class="sidenav-item-link" href="{{ route('pengaturan.bukapendaftaran') }}">
+                        <span class="nav-text">Buka Pendaftaran</span>
+                      </a>
+                    </li>
               </div>
             </ul>
           </li>
-
-          <li  class="has-sub" >
-            <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#documentation"
-              aria-expanded="false" aria-controls="documentation">
-              <i class="mdi mdi-book-open-page-variant"></i>
-              <span class="nav-text">Documentation</span> <b class="caret"></b>
-            </a>
-            <ul  class="collapse"  id="documentation"
-              data-parent="#sidebar-menu">
-              <div class="sub-menu">
-
-                    <li class="section-title">
-                      Getting Started
-                    </li>
-
-                    <li >
-                      <a class="sidenav-item-link" href="introduction.html">
-                        <span class="nav-text">Introduction</span>
-
-                      </a>
-                    </li>
-
-                    <li >
-                      <a class="sidenav-item-link" href="setup.html">
-                        <span class="nav-text">Setup</span>
-
-                      </a>
-                    </li>
-
-                    <li >
-                      <a class="sidenav-item-link" href="customization.html">
-                        <span class="nav-text">Customization</span>
-
-                      </a>
-                    </li>
-
-                    <li class="section-title">
-                      Layouts
-                    </li>
-
-                <li  class="has-sub" >
-                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#headers"
-                    aria-expanded="false" aria-controls="headers">
-                    <span class="nav-text">Layout Headers</span> <b class="caret"></b>
-                  </a>
-                  <ul  class="collapse"  id="headers">
-                    <div class="sub-menu">
-
-                      <li >
-                        <a href="header-fixed.html">Header Fixed</a>
-                      </li>
-
-                      <li >
-                        <a href="header-static.html">Header Static</a>
-                      </li>
-
-                      <li >
-                        <a href="header-light.html">Header Light</a>
-                      </li>
-
-                      <li >
-                        <a href="header-dark.html">Header Dark</a>
-                      </li>
-
-                    </div>
-                  </ul>
-                </li>
-
-                <li  class="has-sub" >
-                  <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#sidebar-navs"
-                    aria-expanded="false" aria-controls="sidebar-navs">
-                    <span class="nav-text">layout Sidebars</span> <b class="caret"></b>
-                  </a>
-                  <ul  class="collapse"  id="sidebar-navs">
-                    <div class="sub-menu">
-
-                      <li >
-                        <a href="sidebar-open.html">Sidebar Open</a>
-                      </li>
-
-                      <li >
-                        <a href="sidebar-minimized.html">Sidebar Minimized</a>
-                      </li>
-
-                      <li >
-                        <a href="sidebar-offcanvas.html">Sidebar Offcanvas</a>
-                      </li>
-
-                      <li >
-                        <a href="sidebar-with-footer.html">Sidebar With Footer</a>
-                      </li>
-
-                      <li >
-                        <a href="sidebar-without-footer.html">Sidebar Without Footer</a>
-                      </li>
-
-                      <li >
-                        <a href="right-sidebar.html">Right Sidebar</a>
-                      </li>
-
-                    </div>
-                  </ul>
-                </li>
-
-                    <li >
-                      <a class="sidenav-item-link" href="rtl.html">
-                        <span class="nav-text">RTL Direction</span>
-
-                      </a>
-                    </li>
-
-              </div>
-            </ul>
-          </li> -->
 
       </ul>
 

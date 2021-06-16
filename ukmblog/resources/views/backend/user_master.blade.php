@@ -23,8 +23,6 @@
   <!-- SLEEK CSS -->
   <link id="sleek-css" rel="stylesheet" href="{{ asset('backend_assets/assets/css/sleek.css') }}" />
 
-
-
   <!-- FAVICON -->
   <link href="{{ asset('backend_assets/assets/img/favicon.png') }}" rel="shortcut icon" />
 

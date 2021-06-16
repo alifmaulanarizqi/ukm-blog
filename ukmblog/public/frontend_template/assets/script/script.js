@@ -31,6 +31,7 @@ $(document).ready(function() {
       once: true
     });
   }
+  
   $(window).on('load', function() {
     aos_init();
   });
