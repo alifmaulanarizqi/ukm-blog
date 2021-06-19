@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\Dev\UkmController;
 use App\Http\Controllers\Backend\Admin\KategoriController;
 use App\Http\Controllers\Backend\Admin\PostController;
 use App\Http\Controllers\Backend\Admin\UserController;
+use App\Http\Controllers\Backend\Admin\LaporanController;
 use App\Http\Controllers\Backend\Admin\PengaturanController;
 
 /*
@@ -47,6 +48,9 @@ Route::get('/post/all', [PostController::class, 'index'])->name('post');
 // user
 Route::get('/anggota/all', [UserController::class, 'anggota'])->name('anggota.ukm');
 Route::get('/anggota/pendaftar', [UserController::class, 'pendaftar'])->name('pendaftar.ukm');
+
+// laporan
+Route::get('/laporan', [LaporanController::class, 'laporan'])->name('laporan');
 
 // pengaturan
 Route::get('/pengaturan/livetv', [PengaturanController::class, 'livetv'])->name('pengaturan.livetv');

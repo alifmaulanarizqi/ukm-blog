@@ -5,7 +5,7 @@
       <a href="{{ url('/dashboard') }}">
          <p class="navbar-brand mr-0"><span class="font-weight-bold">UKM</span></p>
         </svg>
-        <span class="brand-name ml-0">BLOG - User</span>
+        <span class="brand-name ml-0">BLOG - Dashboard</span>
       </a>
     </div>
     <!-- begin sidebar scrollbar -->
@@ -26,6 +26,7 @@
             </a>
           </li>
 
+          @can('ukm_access')
           <li class="has-sub <?php if($urlParts[1] == 'ukm') echo "active expand"; ?>">
             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#ukm"
               aria-expanded="false" aria-controls="ukm">
@@ -51,21 +52,27 @@
               </div>
             </ul>
           </li>
+          @endcan
 
+          @can('kategori_access')
           <li class="has-sub <?php if($urlParts[1] == 'kategori') echo "active expand"; ?>">
             <a class="sidenav-item-link" href="{{ route('kategori') }}">
               <i class="mdi mdi-text-subject"></i>
               <span class="nav-text">Kategori</span>
             </a>
           </li>
+          @endcan
 
+          @can('post_access')
           <li class="has-sub <?php if($urlParts[1] == 'post') echo "active expand"; ?>">
             <a class="sidenav-item-link" href="{{ route('post') }}">
               <i class="mdi mdi-folder-edit"></i>
               <span class="nav-text">Post</span>
             </a>
           </li>
+          @endcan
 
+          @can('user_access')
           <li class="has-sub <?php if($urlParts[1] == 'anggota') echo "active expand"; ?>">
             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#user"
               aria-expanded="false" aria-controls="user">
@@ -88,7 +95,18 @@
               </div>
             </ul>
           </li>
+          @endcan
 
+          @can('laporan_access')
+          <li class="has-sub <?php if($urlParts[1] == 'laporan') echo "active expand"; ?>">
+            <a class="sidenav-item-link" href="{{ route('laporan') }}">
+              <i class="mdi mdi-file-document"></i>
+              <span class="nav-text">Laporan</span>
+            </a>
+          </li>
+          @endcan
+
+          @can('setting_access')
           <li class="has-sub <?php if($urlParts[1] == 'pengaturan') echo "active expand"; ?>">
             <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#pengaturan"
               aria-expanded="false" aria-controls="pengaturan">
@@ -116,6 +134,7 @@
               </div>
             </ul>
           </li>
+          @endcan
 
       </ul>
 
