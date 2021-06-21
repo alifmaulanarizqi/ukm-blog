@@ -35,6 +35,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {
 // ukm
 Route::get('/ukm/all', [UkmController::class, 'semuaUkm'])->name('ukm.semua');
 Route::get('/ukm/pendaftar', [UkmController::class, 'ukmPendaftar'])->name('ukm.pendaftar');
+Route::get('/ukm/pendaftar/{id}', [UkmController::class, 'showUkmPendaftar'])->name('show.ukmpendaftar');
+Route::get('/ukm/approve/{id}', [UkmController::class, 'approveUkm'])->name('aprrove.ukm');
+Route::post('/ukm/decline', [UkmController::class, 'declineUkm'])->name('decline.ukm');
 
 
 

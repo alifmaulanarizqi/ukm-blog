@@ -11156,3 +11156,7 @@ html[dir="rtl"] .sidebar li > a .caret:before {
 .user-profile-loc {
 	
 }
+
+.table-font {
+	font-size: 16px;
+}

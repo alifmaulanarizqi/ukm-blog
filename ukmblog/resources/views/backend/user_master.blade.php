@@ -11,6 +11,9 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500|Poppins:400,500,600,700|Roboto:400,500" rel="stylesheet"/>
   <link href="https://cdn.materialdesignicons.com/3.0.39/css/materialdesignicons.min.css" rel="stylesheet" />
 
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+
   <!-- PLUGINS CSS STYLE -->
   <link href="{{ asset('backend_assets/assets/plugins/toaster/toastr.min.css') }}" rel="stylesheet" />
   <link href="{{ asset('backend_assets/assets/plugins/nprogress/nprogress.css') }}" rel="stylesheet" />
@@ -23,8 +26,14 @@
   <!-- SLEEK CSS -->
   <link id="sleek-css" rel="stylesheet" href="{{ asset('backend_assets/assets/css/sleek.css') }}" />
 
+  <!-- Datatable -->
+  <link href="{{ asset('backend_assets/assets/css/datatables.min.css') }}" rel="stylesheet">
+
   <!-- FAVICON -->
   <link href="{{ asset('backend_assets/assets/img/favicon.png') }}" rel="shortcut icon" />
+
+  <!-- Toastr -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" />
 
   <!--
     HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
@@ -89,8 +98,53 @@
 <script src="{{ asset('backend_assets/assets/js/map.js') }}"></script>
 <script src="{{ asset('backend_assets/assets/js/custom.js') }}"></script>
 
+    <!-- Datatables -->
+    <script src="{{ asset('backend_assets/assets/js/datatables.min.js') }}"></script>
+    <script>
+    $(document).ready(function () {
+        $('#dtBasicExample').DataTable({
+            "searching": true
+        });
+        $('.dataTables_length').addClass('bs-select');
+    });
 
+    $(document).ready(function () {
+        $('#dtBasicExample2').DataTable({
+            "searching": true
+        });
+        $('.dataTables_length').addClass('bs-select');
+    });
+    </script>
 
+    <!-- Toastr -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
+    <script>
+        @if(Session::has('message'))
+            var type = "{{ Session::get('alert-type', 'info') }}"
+            switch (type) {
+                case 'info':
+                    toastr.info("{{ Session::get('message') }}");
+                    break;
+                case 'success':
+                    toastr.success("{{ Session::get('message') }}");
+                    break;
+                case 'warning':
+                    toastr.warning("{{ Session::get('message') }}");
+                    break;
+                case 'error':
+                    toastr.error("{{ Session::get('message') }}");
+                    break;
+            }
+        @endif
+    </script>
+
+    <!-- Send Delete Data Id To Modal -->
+    <script>
+        $(document).on("click", ".deleteBtn", function () {
+           var deleteID = $(this).data('id');
+           $(".modal-body #deleteId").val( deleteID );
+        });
+    </script>
 
   </body>
 </html>
