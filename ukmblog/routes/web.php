@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\ExtraController;
 use App\Http\Controllers\Frontend\UkmPendaftarController;
+use App\Http\Controllers\Frontend\UserPendaftarController;
 use App\Http\Controllers\Backend\Dev\UkmController;
 use App\Http\Controllers\Backend\Admin\KategoriController;
 use App\Http\Controllers\Backend\Admin\PostController;
@@ -58,6 +59,10 @@ Route::get('/post/all', [PostController::class, 'index'])->name('post');
 // user
 Route::get('/anggota/all', [UserController::class, 'anggota'])->name('anggota.ukm');
 Route::get('/anggota/pendaftar', [UserController::class, 'pendaftar'])->name('pendaftar.ukm');
+Route::get('/anggota/pendaftar/{id}', [UserController::class, 'showUserPendaftar'])->name('show.userpendaftar');
+Route::get('/anggota/approve/{id}', [UserController::class, 'approveUser'])->name('aprrove.user');
+Route::post('/anggota/decline', [UserController::class, 'declineUser'])->name('decline.user');
+
 
 // laporan
 Route::get('/laporan', [LaporanController::class, 'laporan'])->name('laporan');
@@ -76,3 +81,6 @@ Route::get('/buka-ukm', [ExtraController::class, 'bukaUkm'])->name('buka.ukm');
 
 // pendaftaran ukm
 Route::post('/pendaftaran-ukm', [UkmPendaftarController::class, 'pendaftaranUkm'])->name('pendaftaran.ukm');
+
+// pendaftaran user
+Route::post('/daftar-ukm', [UserPendaftarController::class, 'pendaftaranUser'])->name('pendaftaran.user');

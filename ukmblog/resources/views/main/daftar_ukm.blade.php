@@ -23,35 +23,56 @@
       <!-- ======= Form Daftar UKM ======= -->
       <section class="pb-lg-5 mt-4">
           <div class="post-container mb-5 mb-lg-3">
-            <form action="" method="post" class="form-text">
+            <form action="{{ route('pendaftaran.user') }}" method="post" class="form-text">
+              @csrf
               <div class="form-group">
                 <label for="name" class="font-weight-bold">Nama</label>
                 <input type="text" name="name" class="form-control" id="name" placeholder="Masukan nama pendaftar">
+                @error('name')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
               </div>
               <div class="form-group">
                 <label for="email" class="font-weight-bold">Email</label>
                 <input type="email" name="email" class="form-control" id="email" placeholder="Masukan nama UKM">
+                @error('email')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
               </div>
               <div class="form-group">
                 <label for="password" class="font-weight-bold">Password</label>
                 <input type="password" class="form-control" name="password" id="password" placeholder="Masukan password">
+                @error('password')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
               </div>
               <div class="form-group">
                 <label for="password_confirmation" class="font-weight-bold">Konfirmasi Password</label>
                 <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="Masukan ulang password">
+                @error('password_confirmation')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
               </div>
               <div class="form-group">
-                <label for="ukm" class="font-weight-bold">UKM</label>
-                <select class="form-control" name="ukm" id="ukm">
+                <label for="ukm_id" class="font-weight-bold">UKM</label>
+                <select class="form-control" name="ukm_id" id="ukm_id">
                   <option disabled selected>--- Pilih UKM ---</option>
-                  <option value="UKM 1">UKM 1</option>
-                  <option value="UKM 2">UKM 2</option>
-                  <option value="UKM 3">UKM 3</option>
+
+                  @foreach($open_register_ukms as $row)
+                      <option value="{{ $row->id }}">{{ $row->ukm_name }}</option>
+                  @endforeach
+
                 </select>
+                @error('ukm_id')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
               </div>
               <div class="form-group">
-                <label for="reason" class="font-weight-bold">Alasan masuk UKM</label>
-                <textarea name="reason" id="reason" class="form-control" rows="4" placeholder="Alasan masuk UKM"></textarea>
+                <label for="reason_joining" class="font-weight-bold">Alasan masuk UKM</label>
+                <textarea name="reason_joining" id="reason_joining" class="form-control" rows="4" placeholder="Alasan masuk UKM"></textarea>
+                @error('reason_joining')
+                    <span class="text-danger">{{ $message }}</span>
+                @enderror
               </div>
               <button type="submit" class="btn btn-primary">Daftar UKM</button>
             </form>

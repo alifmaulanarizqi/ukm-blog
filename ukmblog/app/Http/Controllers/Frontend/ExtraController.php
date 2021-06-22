@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Backend\Ukm;
 
 class ExtraController extends Controller
 {
@@ -12,7 +13,8 @@ class ExtraController extends Controller
     }
 
     public function daftarUkm() {
-        return view('main.daftar_ukm');
+        $open_register_ukms = Ukm::where('open_registration', 1)->get();
+        return view('main.daftar_ukm', compact('open_register_ukms'));
     }
 
     public function bukaUkm() {
