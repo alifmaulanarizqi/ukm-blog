@@ -32,12 +32,19 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {
 
 
 //*=============== BACKEND UNTUK DEVELOPER ===============*//
-// ukm
-Route::get('/ukm/all', [UkmController::class, 'semuaUkm'])->name('ukm.semua');
+// ukm pendaftar
 Route::get('/ukm/pendaftar', [UkmController::class, 'ukmPendaftar'])->name('ukm.pendaftar');
 Route::get('/ukm/pendaftar/{id}', [UkmController::class, 'showUkmPendaftar'])->name('show.ukmpendaftar');
 Route::get('/ukm/approve/{id}', [UkmController::class, 'approveUkm'])->name('aprrove.ukm');
 Route::post('/ukm/decline', [UkmController::class, 'declineUkm'])->name('decline.ukm');
+
+// semua ukm
+Route::get('/ukm/all', [UkmController::class, 'semuaUkm'])->name('ukm.semua');
+Route::get('/ukm/{id}', [UkmController::class, 'showUkm'])->name('show.ukm');
+Route::post('/ukm/softdelete', [UkmController::class, 'softDeleteUkm'])->name('softdelete.ukm');
+Route::get('/ukm/restore/{id}', [UkmController::class, 'restoreUkm'])->name('restore.ukm');
+Route::post('/ukm/delete', [UkmController::class, 'deleteUkm'])->name('delete.ukm');
+
 
 
 

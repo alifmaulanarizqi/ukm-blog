@@ -141,8 +141,8 @@
     <!-- Send Delete Data Id To Modal -->
     <script>
         $(document).on("click", ".deleteBtn", function () {
-           var deleteID = $(this).data('id');
-           $(".modal-body #deleteId").val( deleteID );
+            var deleteID = $(this).data('id');
+            $(".modal-body #deleteId").val( deleteID );
         });
     </script>
 

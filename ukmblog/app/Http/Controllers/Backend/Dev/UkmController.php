@@ -18,12 +18,7 @@ class UkmController extends Controller
         $this->middleware('auth');
     }
 
-    public function semuaUkm() {
-        abort_if(Gate::denies('ukm_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
-
-        return view('backend.ukm.semua_ukm');
-    }
-
+    //============= UKM PENDAFTAR =============//
     public function ukmPendaftar() {
         abort_if(Gate::denies('ukm_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
 
@@ -39,6 +34,8 @@ class UkmController extends Controller
     }
 
     public function approveUkm($id) {
+        abort_if(Gate::denies('ukm_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
+
         $ukm_pendaftar = UkmPendaftar::find($id);
 
         $ukm = new Ukm();
@@ -69,6 +66,8 @@ class UkmController extends Controller
     }
 
     public function declineUkm() {
+        abort_if(Gate::denies('ukm_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
+
         $id = $_POST['deleteId'];
         $delete = UkmPendaftar::find($id)->delete();
 
@@ -79,4 +78,70 @@ class UkmController extends Controller
 
         return Redirect()->route('ukm.pendaftar')->with($notif);
     }
+
+
+    //============= SEMUA UKM =============//
+    public function semuaUkm() {
+        abort_if(Gate::denies('ukm_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
+
+        $ukms = Ukm::latest()->get();
+        $ukms_in_trash = Ukm::onlyTrashed()->latest()->get();
+        return view('backend.ukm.semua_ukm', compact('ukms', 'ukms_in_trash'));
+    }
+
+    public function showUkm($id) {
+        abort_if(Gate::denies('ukm_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
+
+        $ukm = Ukm::find($id);
+        return view('backend.ukm.show_ukm', compact('ukm'));
+    }
+
+    public function softDeleteUkm() {
+        abort_if(Gate::denies('ukm_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
+
+        $id = $_POST['deleteId'];
+        $ukm = Ukm::find($id);
+        $delete_user = User::where('ukm_id', $ukm->id)->delete();
+        $delete_ukm = $ukm->delete();
+
+        $notif = array(
+            'message' => 'UKM berhasil dimasukan ke keranjang sampah',
+            'alert-type' => 'warning',
+        );
+
+        return Redirect()->route('ukm.semua')->with($notif);
+    }
+
+    public function restoreUkm($id) {
+        abort_if(Gate::denies('ukm_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
+
+        $ukm = Ukm::withTrashed()->find($id);
+        $restore_user = User::where('ukm_id', $ukm->id)->restore();
+        $restore_ukm = $ukm->restore();
+
+        $notif = array(
+            'message' => 'UKM berhasil direstore',
+            'alert-type' => 'success',
+        );
+
+        return Redirect()->back()->with($notif);
+    }
+
+    public function deleteUkm() {
+        abort_if(Gate::denies('ukm_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
+
+        $id = $_POST['deleteId'];
+
+        $ukm = Ukm::withTrashed()->find($id);
+        $delete_user = User::where('ukm_id', $ukm->id)->forceDelete();
+        $restore_ukm = $ukm->forceDelete();
+
+        $notif = array(
+            'message' => 'UKM berhasil dihapus',
+            'alert-type' => 'error',
+        );
+
+        return Redirect()->back()->with($notif);
+    }
+
 }
