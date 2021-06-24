@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 // use App\Models\Role;
 // use App\Models\User;
+use App\Models\Backend\Kategori;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
+use Auth;
 
 class KategoriController extends Controller
 {
@@ -18,6 +20,102 @@ class KategoriController extends Controller
     public function index() {
         abort_if(Gate::denies('kategori_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
 
-        return view('backend.kategori.index');
+        $kategoris = Kategori::where('ukm_id', Auth::user()->ukm_id)->get();
+        $kategoris_in_trash = Kategori::onlyTrashed()->where('ukm_id', Auth::user()->ukm_id)->get();
+        return view('backend.kategori.index', compact('kategoris', 'kategoris_in_trash'));
     }
+
+    public function addKategori() {
+        abort_if(Gate::denies('kategori_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
+
+        return view('backend.kategori.add');
+    }
+
+    public function storeKategori(Request $request) {
+        abort_if(Gate::denies('kategori_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
+
+        $validated = $request->validate([
+            'kategori' => 'required|max:255',
+        ]);
+
+        $kategori = new Kategori;
+        $kategori->kategori = $request->kategori;
+        $kategori->ukm_id = Auth::user()->ukm_id;
+        $kategori->save();
+
+        $notif = array(
+            'message' => 'Kategori berhasil ditambah',
+            'alert-type' => 'success',
+        );
+
+        return Redirect()->route('kategori')->with($notif);
+    }
+
+    public function editKategori($id) {
+        abort_if(Gate::denies('kategori_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
+
+        $kategori = Kategori::find($id);
+        return view('backend.kategori.edit', compact('kategori'));
+    }
+
+    public function updateKategori(Request $request, $id) {
+        abort_if(Gate::denies('kategori_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
+
+        $validated = $request->validate([
+            'kategori' => 'required|max:255',
+        ]);
+
+        $update = Kategori::find($id)->update([
+          'kategori' => $request->kategori,
+        ]);
+
+        $notif = array(
+            'message' => 'Kategori berhasil diupdate',
+            'alert-type' => 'info',
+        );
+
+        return Redirect()->route('kategori')->with($notif);
+    }
+
+    public function softDeleteKategori() {
+        abort_if(Gate::denies('kategori_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
+
+        $id = $_POST['deleteId'];
+        $delete = Kategori::find($id)->delete();
+
+        $notif = array(
+            'message' => 'Kategori berhasil dimasukan ke keranjang sampah',
+            'alert-type' => 'warning',
+        );
+
+        return Redirect()->route('kategori')->with($notif);
+    }
+
+    public function restoreKategori($id) {
+        abort_if(Gate::denies('kategori_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
+
+        $restore = Kategori::onlyTrashed()->find($id)->restore();
+
+        $notif = array(
+            'message' => 'Kategori berhasil direstore',
+            'alert-type' => 'warning',
+        );
+
+        return Redirect()->route('kategori')->with($notif);
+    }
+
+    public function deleteKategori() {
+        abort_if(Gate::denies('kategori_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
+
+        $id = $_POST['deleteId'];
+        $delete = Kategori::onlyTrashed()->find($id)->forceDelete();
+
+        $notif = array(
+            'message' => 'Kategori berhasil dihapus',
+            'alert-type' => 'error',
+        );
+
+        return Redirect()->route('kategori')->with($notif);
+    }
+
 }

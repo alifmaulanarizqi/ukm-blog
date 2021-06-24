@@ -52,6 +52,13 @@ Route::post('/ukm/delete', [UkmController::class, 'deleteUkm'])->name('delete.uk
 //*=============== BACKEND UNTUK KETUA DAN ADMIN ===============*//
 // kategori
 Route::get('/kategori/all', [KategoriController::class, 'index'])->name('kategori');
+Route::get('/kategori/add', [KategoriController::class, 'addKategori'])->name('add.kategori');
+Route::post('/kategori/store', [KategoriController::class, 'storeKategori'])->name('store.kategori');
+Route::get('/kategori/edit/{id}', [KategoriController::class, 'editKategori'])->name('edit.kategori');
+Route::post('/kategori/update/{id}', [KategoriController::class, 'updateKategori'])->name('update.kategori');
+Route::post('/kategori/softdelete', [KategoriController::class, 'softDeleteKategori'])->name('softdelete.kategori');
+Route::get('/kategori/restore/{id}', [KategoriController::class, 'restoreKategori'])->name('restore.kategori');
+Route::post('/kategori/delete', [KategoriController::class, 'deleteKategori'])->name('delete.kategori');
 
 // post
 Route::get('/post/all', [PostController::class, 'index'])->name('post');
@@ -82,7 +89,7 @@ Route::get('/pengaturan/buka-pendaftaran', [PengaturanController::class, 'bukaPe
 
 
 //*=============== FRONTEND ===============*//
-Route::get('/ukm/nama-ukm', [ExtraController::class, 'halamanUkm'])->name('hal.ukm');
+Route::get('/nama-ukm', [ExtraController::class, 'halamanUkm'])->name('hal.ukm');
 Route::get('/daftar-ukm', [ExtraController::class, 'daftarUkm'])->name('daftar.ukm');
 Route::get('/buka-ukm', [ExtraController::class, 'bukaUkm'])->name('buka.ukm');
 

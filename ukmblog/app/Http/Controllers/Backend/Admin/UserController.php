@@ -31,7 +31,8 @@ class UserController extends Controller
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
 
         $anggota = User::find($id);
-        return view('backend.user.edit_anggota', compact('anggota'));
+        $role_id = DB::table('role_user')->select('role_id')->where('user_id', $id)->first();
+        return view('backend.user.edit_anggota', compact('anggota', 'role_id'));
     }
 
     public function updateAnggota(Request $request, $id) {
@@ -45,7 +46,7 @@ class UserController extends Controller
             DB::table('role_user')->where('user_id', Auth::user()->id)->update($data);
 
             $notif = array(
-                'message' => 'User Berhasil Diupdate, Role Anda Sekarang Adalah Admin',
+                'message' => 'Anggota Berhasil Diupdate, Role Anda Sekarang Adalah Admin',
                 'alert-type' => 'info',
             );
 
@@ -53,7 +54,7 @@ class UserController extends Controller
         }
 
         $notif = array(
-            'message' => 'User Berhasil Diupdate',
+            'message' => 'Anggota Berhasil Diupdate',
             'alert-type' => 'info',
         );
 

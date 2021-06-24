@@ -34,9 +34,10 @@
               <div class="col-12 col-lg-9">
                 <select class="form-control" name="role_id" id="role_id">
                   <option disabled selected>--- Pilih Role ---</option>
-                  <option value="2">Ketua</option>
-                  <option value="3">Admin</option>
-                  <option value="4">Anggota</option>
+
+                  <option value="2" <?php if($role_id->role_id == 2) echo "selected"; ?> >Ketua</option>
+                  <option value="3" <?php if($role_id->role_id == 3) echo "selected"; ?> >Admin</option>
+                  <option value="4" <?php if($role_id->role_id == 4) echo "selected"; ?> >Anggota</option>
 
                 </select>
                 @error('role_id')
