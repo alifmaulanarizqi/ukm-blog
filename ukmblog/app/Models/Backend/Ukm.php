@@ -14,5 +14,11 @@ class Ukm extends Model
     protected $fillable = [
         'name',
         'description',
+        'twitter',
+        'instagram',
+        'facebook',
+        'youtube',
+        'livetv',
+        'open_registration',
     ];
 }

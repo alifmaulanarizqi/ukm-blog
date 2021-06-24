@@ -81,10 +81,19 @@ Route::post('/anggota/delete', [UserController::class, 'deleteAnggota'])->name('
 // laporan
 Route::get('/laporan', [LaporanController::class, 'laporan'])->name('laporan');
 
-// pengaturan
+// live tv
 Route::get('/pengaturan/livetv', [PengaturanController::class, 'livetv'])->name('pengaturan.livetv');
+Route::post('/pengaturan/update/livetv/{id}', [PengaturanController::class, 'updateLiveTv'])->name('update.livetv');
+
+
+// sosial media
 Route::get('/pengaturan/sosial-media', [PengaturanController::class, 'sosialMedia'])->name('pengaturan.sosial');
+Route::post('/pengaturan/update/sosial/{id}', [PengaturanController::class, 'updateSosialMedia'])->name('update.sosial');
+
+// buka-pendaftaran
 Route::get('/pengaturan/buka-pendaftaran', [PengaturanController::class, 'bukaPendaftaran'])->name('pengaturan.bukapendaftaran');
+Route::get('/pengaturan/pendaftaran/active/{id}', [PengaturanController::class, 'activeOpenRegistration'])->name('active.open_registration');
+Route::get('/pengaturan/pendaftaran/deactive/{id}', [PengaturanController::class, 'deActiveOpenRegistration'])->name('deactive.open_registration');
 
 
 
