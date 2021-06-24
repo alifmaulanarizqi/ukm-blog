@@ -81,10 +81,14 @@ Route::post('/anggota/delete', [UserController::class, 'deleteAnggota'])->name('
 // laporan
 Route::get('/laporan', [LaporanController::class, 'laporan'])->name('laporan');
 
+
+// profile ukm
+Route::get('/pengaturan/profileukm', [PengaturanController::class, 'profileUkm'])->name('pengaturan.profileukm');
+Route::post('/pengaturan/update/profileukm/{id}', [PengaturanController::class, 'updateProfileUkm'])->name('update.profileukm');
+
 // live tv
 Route::get('/pengaturan/livetv', [PengaturanController::class, 'livetv'])->name('pengaturan.livetv');
 Route::post('/pengaturan/update/livetv/{id}', [PengaturanController::class, 'updateLiveTv'])->name('update.livetv');
-
 
 // sosial media
 Route::get('/pengaturan/sosial-media', [PengaturanController::class, 'sosialMedia'])->name('pengaturan.sosial');

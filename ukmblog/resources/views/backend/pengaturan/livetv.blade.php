@@ -13,7 +13,7 @@
           @csrf
           <div class="form-group">
             <label for="livetv">Embed Code</label>
-            <input type="text" class="form-control" name="livetv" id="livetv" placeholder="Masukan link video" value="{{ $livetv->livetv }}">
+            <textarea name="livetv" class="form-control" rows="4" id="livetv" placeholder="Masukan link video">{{ $livetv->livetv }}</textarea>
             @error('livetv')
                 <span class="text-danger">{{ $message }}</span>
             @enderror

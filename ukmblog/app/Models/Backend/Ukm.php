@@ -14,6 +14,7 @@ class Ukm extends Model
     protected $fillable = [
         'name',
         'description',
+        'image',
         'twitter',
         'instagram',
         'facebook',

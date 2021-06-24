@@ -116,6 +116,11 @@
             <ul class="collapse <?php if($urlParts[1] == 'pengaturan') echo "show"; ?>" id="pengaturan"
               data-parent="#sidebar-menu">
               <div class="sub-menu">
+                    <li class="<?php if(!empty($urlParts[2])) { if($urlParts[1] == 'pengaturan') { if($urlParts[2] == 'profileukm') echo "active"; }  } ?>">
+                      <a class="sidenav-item-link" href="{{ route('pengaturan.profileukm') }}">
+                        <span class="nav-text">Profile UKM</span>
+                      </a>
+                    </li>
                     <li class="<?php if(!empty($urlParts[2])) { if($urlParts[1] == 'pengaturan') { if($urlParts[2] == 'livetv') echo "active"; }  } ?>">
                       <a class="sidenav-item-link" href="{{ route('pengaturan.livetv') }}">
                         <span class="nav-text">Live Tv</span>
