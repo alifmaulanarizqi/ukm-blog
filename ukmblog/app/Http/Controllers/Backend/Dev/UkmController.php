@@ -134,7 +134,7 @@ class UkmController extends Controller
 
         $ukm = Ukm::withTrashed()->find($id);
         $delete_user = User::where('ukm_id', $ukm->id)->forceDelete();
-        $restore_ukm = $ukm->forceDelete();
+        $delete_ukm = $ukm->forceDelete();
 
         $notif = array(
             'message' => 'UKM berhasil dihapus',

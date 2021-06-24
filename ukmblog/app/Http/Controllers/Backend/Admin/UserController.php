@@ -18,12 +18,88 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
-
     //============= ANGGOTA =============//
     public function anggota() {
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
 
-        return view('backend.user.anggota');
+        $anggotas = User::where('ukm_id', Auth::user()->ukm_id)->get();
+        $anggotas_in_trash = User::onlyTrashed()->where('ukm_id', Auth::user()->ukm_id)->get();
+        return view('backend.user.anggota', compact('anggotas', 'anggotas_in_trash'));
+    }
+
+    public function editAnggota($id) {
+        abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
+
+        $anggota = User::find($id);
+        return view('backend.user.edit_anggota', compact('anggota'));
+    }
+
+    public function updateAnggota(Request $request, $id) {
+        $data = array();
+        $data['role_id'] = $request->role_id;
+        DB::table('role_user')->where('user_id', $id)->update($data);
+
+        if($data['role_id'] == 2) {
+            $data = array();
+            $data['role_id'] = 3;
+            DB::table('role_user')->where('user_id', Auth::user()->id)->update($data);
+
+            $notif = array(
+                'message' => 'User Berhasil Diupdate, Role Anda Sekarang Adalah Admin',
+                'alert-type' => 'info',
+            );
+
+            return Redirect()->route('dashboard')->with($notif);
+        }
+
+        $notif = array(
+            'message' => 'User Berhasil Diupdate',
+            'alert-type' => 'info',
+        );
+
+        return Redirect()->route('anggota.ukm')->with($notif);
+    }
+
+    public function softDeleteAnggota() {
+        abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
+
+        $id = $_POST['deleteId'];
+        $delete_anggota = User::find($id)->delete();
+
+        $notif = array(
+            'message' => 'Anggota berhasil dimasukan ke keranjang sampah',
+            'alert-type' => 'warning',
+        );
+
+        return Redirect()->route('anggota.ukm')->with($notif);
+    }
+
+    public function restoreAnggota($id) {
+        abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
+
+        $anggota = User::withTrashed()->find($id)->restore();
+
+        $notif = array(
+            'message' => 'Anggota berhasil direstore',
+            'alert-type' => 'success',
+        );
+
+        return Redirect()->back()->with($notif);
+    }
+
+    public function deleteAnggota() {
+        abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
+
+        $id = $_POST['deleteId'];
+
+        $anggota = User::withTrashed()->find($id)->forceDelete();
+
+        $notif = array(
+            'message' => 'Anggota berhasil dihapus',
+            'alert-type' => 'error',
+        );
+
+        return Redirect()->back()->with($notif);
     }
 
 

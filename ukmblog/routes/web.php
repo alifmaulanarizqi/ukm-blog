@@ -56,12 +56,19 @@ Route::get('/kategori/all', [KategoriController::class, 'index'])->name('kategor
 // post
 Route::get('/post/all', [PostController::class, 'index'])->name('post');
 
-// user
+// user pendaftar
 Route::get('/anggota/all', [UserController::class, 'anggota'])->name('anggota.ukm');
 Route::get('/anggota/pendaftar', [UserController::class, 'pendaftar'])->name('pendaftar.ukm');
 Route::get('/anggota/pendaftar/{id}', [UserController::class, 'showUserPendaftar'])->name('show.userpendaftar');
 Route::get('/anggota/approve/{id}', [UserController::class, 'approveUser'])->name('aprrove.user');
 Route::post('/anggota/decline', [UserController::class, 'declineUser'])->name('decline.user');
+
+// user anggota
+Route::get('/anggota/edit/{id}', [UserController::class, 'editAnggota'])->name('edit.anggota');
+Route::post('/update/anggota/{id}', [UserController::class, 'updateAnggota'])->name('update.anggota');
+Route::post('/anggota/softdelete', [UserController::class, 'softDeleteAnggota'])->name('softdelete.anggota');
+Route::get('/anggota/restore/{id}', [UserController::class, 'restoreAnggota'])->name('restore.anggota');
+Route::post('/anggota/delete', [UserController::class, 'deleteAnggota'])->name('delete.anggota');
 
 
 // laporan
