@@ -8,11 +8,18 @@
   <div class="content">
     <div class="card card-default">
       <div class="card-header card-header-border-bottom">
-        <h2>Live TV</h2>
+        <h2>Profile UKM</h2>
       </div>
       <div class="card-body">
         <form action="{{ route('update.profileukm', $profile_ukm->id) }}" method="post" enctype="multipart/form-data">
           @csrf
+          <div class="form-group">
+            <label for="ukm_name">Nama UKM</label>
+            <input type="text" name="ukm_name" class="form-control" id="ukm_name" placeholder="Masukan nama ukm" value="{{ $profile_ukm->ukm_name }}">
+            @error('ukm_name')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
+          </div>
           <div class="form-group">
             <label for="description">Deskripsi</label>
             <textarea name="description" class="form-control" rows="5" id="description" placeholder="Masukan deskripsi ukm">{{ $profile_ukm->description }}</textarea>

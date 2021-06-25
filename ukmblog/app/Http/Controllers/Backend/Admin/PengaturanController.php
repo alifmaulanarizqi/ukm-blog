@@ -31,11 +31,13 @@ class PengaturanController extends Controller
         abort_if(Gate::denies('setting_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
 
         $validated = $request->validate([
+            'ukm_name' => 'required',
             'description' => 'required',
             'image' => 'mimes:jpg,jpeg,png',
         ]);
 
         $update = Ukm::find($id)->update([
+            'ukm_name' => $request->ukm_name,
             'description' => $request->description,
         ]);
 

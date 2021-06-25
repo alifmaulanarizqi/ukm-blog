@@ -35,6 +35,10 @@
   <!-- Toastr -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" />
 
+  <!-- Summernote Editor -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+
   <!--
     HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
   -->
@@ -143,6 +147,15 @@
         $(document).on("click", ".deleteBtn", function () {
             var deleteID = $(this).data('id');
             $(".modal-body #deleteId").val( deleteID );
+        });
+    </script>
+
+    <!-- Summer Note -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+    <script type="text/javascript">
+        $('#summernote').summernote({
+            height: 400
         });
     </script>
 

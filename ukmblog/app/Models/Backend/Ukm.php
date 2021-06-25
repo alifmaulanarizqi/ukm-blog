@@ -12,7 +12,7 @@ class Ukm extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name',
+        'ukm_name',
         'description',
         'image',
         'twitter',

@@ -62,6 +62,13 @@ Route::post('/kategori/delete', [KategoriController::class, 'deleteKategori'])->
 
 // post
 Route::get('/post/all', [PostController::class, 'index'])->name('post');
+Route::get('/post/add', [PostController::class, 'addPost'])->name('add.post');
+Route::post('/post/store', [PostController::class, 'storePost'])->name('store.post');
+Route::get('/post/edit/{id}', [PostController::class, 'editPost'])->name('edit.post');
+Route::post('/post/update/{id}', [PostController::class, 'updatePost'])->name('update.post');
+Route::post('/post/softdelete', [PostController::class, 'softDeletePost'])->name('softdelete.post');
+Route::get('/post/restore/{id}', [PostController::class, 'restorePost'])->name('restore.post');
+Route::post('/post/delete', [PostController::class, 'deletePost'])->name('delete.post');
 
 // user pendaftar
 Route::get('/anggota/all', [UserController::class, 'anggota'])->name('anggota.ukm');
