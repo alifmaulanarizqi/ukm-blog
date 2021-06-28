@@ -11160,3 +11160,7 @@ html[dir="rtl"] .sidebar li > a .caret:before {
 .table-font {
 	font-size: 16px;
 }
+
+.mdi-dashboard-icon {
+	font-size: 65px;
+}

@@ -25,6 +25,14 @@
               <textarea rows="8" class="form-control-plaintext" readonly>{{ $ukm->description }}</textarea>
             </div>
           </div>
+          <div class="form-group row">
+            <div class="col-12 col-lg-3">
+              <label class="col-form-label">Image</label>
+            </div>
+            <div class="col-12 col-lg-9">
+              <img style="width: 20rem;" src="{{ (!empty($ukm->image)) ? asset($ukm->image) : url('image/no_image.jpg') }}" alt="">
+            </div>
+          </div>
           <div class="d-flex justify-content-between">
             <div class="">
               <a href="{{ route('ukm.semua') }}" class="btn btn-secondary">Kembali</a>

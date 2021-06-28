@@ -27,7 +27,10 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {
-    return view('backend.index');
+    if(Auth::user()->ukm_id == NULL)
+      return view('backend.indexdev');
+    else
+      return view('backend.indexuser');
 })->name('dashboard');
 
 

@@ -14,7 +14,8 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nama UKM</th>
-                <th scope="col" width="50%">Deskripsi</th>
+                <th scope="col" width="15%">Image</th>
+                <th scope="col" width="45%">Deskripsi</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -24,6 +25,7 @@
                   <tr>
                     <td scope="row">{{ $i++ }}</td>
                     <td>{{ $row->ukm_name }}</td>
+                    <td><img style="width: 7rem;" src="{{ (!empty($row->image)) ? asset($row->image) : url('image/no_image.jpg') }}" alt=""></td>
                     <td>{{ Str::limit($row->description, 100) }}</td>
                     <td>
                       <a href="{{ route('show.ukm', $row->id) }}" class="btn btn-info btn-sm">Show</a>
