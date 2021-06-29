@@ -22,7 +22,12 @@ class UserController extends Controller
     public function anggota() {
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
 
-        $anggotas = User::where('ukm_id', Auth::user()->ukm_id)->get();
+        $anggotas = DB::table('users')
+                        ->join('role_user', 'users.id', 'role_user.user_id')
+                        ->join('roles', 'role_user.role_id', 'roles.id')
+                        ->select('users.id', 'users.name', 'users.email', 'roles.title')
+                        ->where('ukm_id', Auth::user()->ukm_id)
+                        ->get();
         $anggotas_in_trash = User::onlyTrashed()->where('ukm_id', Auth::user()->ukm_id)->get();
         return view('backend.user.anggota', compact('anggotas', 'anggotas_in_trash'));
     }

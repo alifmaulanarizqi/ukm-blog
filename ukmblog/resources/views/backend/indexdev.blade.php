@@ -28,16 +28,6 @@
               </div>
             </div>
           </div>
-
-          @php
-              $developer = DB::table('users')
-                              ->join('role_user', 'users.id', 'role_user.user_id')
-                              ->select('users.*', 'role_user.role_id')
-                              ->where('role_user.role_id', 1)
-                              ->get();
-
-          @endphp
-
           <div class="col-xl-3 col-sm-6">
             <div class="card card-mini  mb-4">
               <div class="card-body">
@@ -76,10 +66,18 @@
   <div class="row">
 
     @php
+        $developer = DB::table('users')
+                        ->join('role_user', 'users.id', 'role_user.user_id')
+                        ->select('users.*', 'role_user.role_id')
+                        ->where('role_user.role_id', 1)
+                        ->get();
+    @endphp
+
+    @php
         $ukm = Ukm::all();
 
         foreach($ukm as $row) {
-          	$nama_ukm[] = $row['ukm_name'];
+            $nama_ukm[] = $row['ukm_name'];
             $id_ukm = $row['id'];
 
             $banyak_user_ukm = DB::table('users')

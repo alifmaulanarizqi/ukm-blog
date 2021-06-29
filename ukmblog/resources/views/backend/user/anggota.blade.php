@@ -15,6 +15,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Nama</th>
                 <th scope="col">Email</th>
+                <th scope="col">Role</th>
                 <th scope="col">Action</th>
               </tr>
             </thead>
@@ -25,6 +26,7 @@
                     <td scope="row">{{ $i++ }}</td>
                     <td>{{ $row->name }}</td>
                     <td>{{ $row->email }}</td>
+                    <td>{{ $row->title }}</td>
                     <td>
                       @if(Auth::id() != $row->id)
                       <a href="{{ route('edit.anggota', $row->id) }}" class="btn btn-info btn-sm">Edit</a>
