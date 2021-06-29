@@ -74,14 +74,14 @@
     @endphp
 
     @php
-        $ukm = Ukm::all();
+        $ukm = Ukm::select('id', 'ukm_name')->get();
 
         foreach($ukm as $row) {
             $nama_ukm[] = $row['ukm_name'];
             $id_ukm = $row['id'];
 
             $banyak_user_ukm = DB::table('users')
-                                  ->select(DB::raw('count(*) as count'))
+                                  ->select(DB::raw('count(id) as count'))
                                   ->whereRaw('ukm_id="'.$id_ukm.'"')
                                   ->get();
 
@@ -186,6 +186,7 @@
                 },
                 scales: {
                   xAxes: [{
+                    barPercentage: 0.5,
                     gridLines: {
                       display: false,
                       drawBorder: false
