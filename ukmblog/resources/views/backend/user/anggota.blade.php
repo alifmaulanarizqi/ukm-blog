@@ -14,6 +14,7 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nama</th>
+                <th scope="col">Image</th>
                 <th scope="col">Email</th>
                 <th scope="col">Role</th>
                 <th scope="col">Action</th>
@@ -25,6 +26,7 @@
                   <tr>
                     <td scope="row">{{ $i++ }}</td>
                     <td>{{ $row->name }}</td>
+                    <td><img style="width: 5rem;" src="{{ (!empty($row->profile_photo_path)) ? asset($row->profile_photo_path) : url('image/no_image.jpg') }}" class="square-image" alt=""></td>
                     <td>{{ $row->email }}</td>
                     <td>{{ $row->title }}</td>
                     <td>

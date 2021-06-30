@@ -33,7 +33,7 @@
                     <td scope="row">{{ $i++ }}</td>
                     <td>{{ $row->title }}</td>
                     <td>{{ !empty($row->kategori) ? $row->kategori->kategori : '[deleted]' }}</td>
-                    <td><img style="width: 5rem; height: 5rem;" src="{{ (!empty($row->image)) ? asset($row->image) : url('image/no_image.jpg') }}" alt=""></td>
+                    <td><img style="width: 5rem;" src="{{ (!empty($row->image)) ? asset($row->image) : url('image/no_image.jpg') }}" class="square-image" alt=""></td>
                     <td>{!! $row->konten !!}</td>
                     <td>{{ $row->tanggal }}</td>
                     <td>

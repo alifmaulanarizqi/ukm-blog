@@ -11153,14 +11153,16 @@ html[dir="rtl"] .sidebar li > a .caret:before {
   color: #f8d800;
 }
 
-.user-profile-loc {
-	
-}
-
 .table-font {
 	font-size: 16px;
 }
 
 .mdi-dashboard-icon {
 	font-size: 65px;
+}
+
+.square-image {
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
 }
