@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserSettingController;
 use App\Http\Controllers\Frontend\ExtraController;
 use App\Http\Controllers\Frontend\UkmPendaftarController;
 use App\Http\Controllers\Frontend\UserPendaftarController;
@@ -33,6 +34,11 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {
       return view('backend.indexuser');
 })->name('dashboard');
 
+// user setting
+Route::get('/user/profile', [UserSettingController::class, 'userProfile'])->name('profile.setting');
+Route::post('/user/profile/update', [UserSettingController::class, 'updateUserProfile'])->name('update.profile');
+Route::get('/user/password', [UserSettingController::class, 'userChangePassword'])->name('change.password');
+Route::post('/user/password/update', [UserSettingController::class, 'updateUserPassword'])->name('update.password');
 
 
 //*=============== BACKEND UNTUK DEVELOPER ===============*//
