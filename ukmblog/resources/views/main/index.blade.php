@@ -66,83 +66,19 @@
       </div>
       <div class="row mt-5">
 
-        <div class="col-sm-6 col-lg-3">
-          <a href="#">
-            <div class="container-img my-3">
-              <img src="{{ asset('frontend_template/assets/images/Screenshot376.png') }}" class="img-fluid" alt="">
-              <div class="content">
-                <h3 class="text-center">UKM 1</h3>
-                <p>Kunjungi <i class="fas fa-angle-right"></i></p>
-              </div>
+        @foreach($ukm_section as $row)
+            <div class="col-sm-6 col-lg-3">
+              <a href="#">
+                <div class="container-img my-3">
+                  <img src="{{ (!empty($row->image)) ? asset($row->image) : url('image/ukms/ukm_default.png') }}" class="ukm-image-rectangle" alt="">
+                  <div class="content">
+                    <h3 class="text-center">{{ $row->ukm_name }}</h3>
+                    <p>Kunjungi <i class="fas fa-angle-right"></i></p>
+                  </div>
+                </div>
+              </a>
             </div>
-          </a>
-        </div>
-        <div class="col-sm-6 col-lg-3">
-          <a href="#">
-            <div class="container-img my-3">
-              <img src="{{ asset('frontend_template/assets/images/Screenshot376.png') }}" class="img-fluid" alt="">
-              <div class="content">
-                <h3 class="text-center">UKM 2</h3>
-                <p>Kunjungi <i class="fas fa-angle-right"></i></p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-sm-6 col-lg-3">
-          <a href="#">
-            <div class="container-img my-3">
-              <img src="{{ asset('frontend_template/assets/images/Screenshot376.png') }}" class="img-fluid" alt="">
-              <div class="content">
-                <h3 class="text-center">UKM 3</h3>
-                <p>Kunjungi <i class="fas fa-angle-right"></i></p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-sm-6 col-lg-3">
-          <a href="#">
-            <div class="container-img my-3">
-              <img src="{{ asset('frontend_template/assets/images/Screenshot376.png') }}" class="img-fluid" alt="">
-              <div class="content">
-                <h3 class="text-center">UKM 4</h3>
-                <p>Kunjungi <i class="fas fa-angle-right"></i></p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-sm-6 col-lg-3">
-          <a href="#">
-            <div class="container-img my-3">
-              <img src="{{ asset('frontend_template/assets/images/Screenshot376.png') }}" class="img-fluid" alt="">
-              <div class="content">
-                <h3 class="text-center">UKM 5</h3>
-                <p>Kunjungi <i class="fas fa-angle-right"></i></p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-sm-6 col-lg-3">
-          <a href="#">
-            <div class="container-img my-3">
-              <img src="{{ asset('frontend_template/assets/images/Screenshot376.png') }}" class="img-fluid" alt="">
-              <div class="content">
-                <h3 class="text-center">UKM 6</h3>
-                <p>Kunjungi <i class="fas fa-angle-right"></i></p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="col-sm-6 col-lg-3">
-          <a href="#">
-            <div class="container-img my-3">
-              <img src="{{ asset('frontend_template/assets/images/Screenshot376.png') }}" class="img-fluid" alt="">
-              <div class="content">
-                <h3 class="text-center">UKM 7</h3>
-                <p>Kunjungi <i class="fas fa-angle-right"></i></p>
-              </div>
-            </div>
-          </a>
-        </div>
+        @endforeach
 
       </div>
     </div>
@@ -158,51 +94,17 @@
 
       <div class="row mt-5 text-left">
 
-        <div class="col-sm-6 col-lg-3 my-3">
-          <a href="#">
-            <img src="{{ asset('frontend_template/assets/images/Screenshot376.png') }}" class="img-fluid" alt="">
-          </a>
-          <a href="#" class="badge badge-custom my-3">UKM 1</a>
-          <small class="ml-2 text-dark">6 Juni 2021</small>
-          <a href="#"><h5 class="judul-post">Artikel Satu</h5></a>
-          <p class="desc-post">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est, nemo!</p>
-        </div>
-        <div class="col-sm-6 col-lg-3 my-3">
-          <a href="#">
-            <img src="{{ asset('frontend_template/assets/images/Screenshot376.png') }}" class="img-fluid" alt="">
-          </a>
-          <a href="#" class="badge badge-custom my-3">UKM 1</a>
-          <small class="ml-2 text-dark">6 Juni 2021</small>
-          <a href="#"><h5 class="judul-post">Artikel Satu</h5></a>
-          <p class="desc-post">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est, nemo!</p>
-        </div>
-        <div class="col-sm-6 col-lg-3 my-3">
-          <a href="#">
-            <img src="{{ asset('frontend_template/assets/images/Screenshot376.png') }}" class="img-fluid" alt="">
-          </a>
-          <a href="#" class="badge badge-custom my-3">UKM 1</a>
-          <small class="ml-2 text-dark">6 Juni 2021</small>
-          <a href="#"><h5 class="judul-post">Artikel Satu</h5></a>
-          <p class="desc-post">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est, nemo!</p>
-        </div>
-        <div class="col-sm-6 col-lg-3 my-3">
-          <a href="#">
-            <img src="{{ asset('frontend_template/assets/images/Screenshot376.png') }}" class="img-fluid" alt="">
-          </a>
-          <a href="#" class="badge badge-custom my-3">UKM 1</a>
-          <small class="ml-2 text-dark">6 Juni 2021</small>
-          <a href="#"><h5 class="judul-post">Artikel Satu</h5></a>
-          <p class="desc-post">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est, nemo!</p>
-        </div>
-        <div class="col-sm-6 col-lg-3 my-3">
-          <a href="#">
-            <img src="{{ asset('frontend_template/assets/images/Screenshot376.png') }}" class="img-fluid" alt="">
-          </a>
-          <a href="#" class="badge badge-custom my-3">UKM 1</a>
-          <small class="ml-2 text-dark">6 Juni 2021</small>
-          <a href="#"><h5 class="judul-post">Artikel Satu</h5></a>
-          <p class="desc-post">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est, nemo!</p>
-        </div>
+        @foreach($post_section as $row)
+          <div class="col-sm-6 col-lg-3 my-3">
+            <a href="#">
+              <img src="{{ (!empty($row->image)) ? asset($row->image) : url('image/post/post_default.png') }}" class="ukm-image-rectangle" alt="">
+            </a>
+            <a href="#" class="badge badge-custom my-3">{{ $row->ukm->ukm_name }}</a>
+            <small class="ml-2 text-dark">{{ $row->tanggal }}</small>
+            <a href="#"><h5 class="judul-post">{{ $row->title }}</h5></a>
+            <div class="desc-post">{!! Str::limit($row->konten, 100) !!}</div>
+          </div>
+        @endforeach
 
       </div>
 

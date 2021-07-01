@@ -72,7 +72,7 @@
         $anggotas = DB::table('users')
                         ->join('role_user', 'users.id', 'role_user.user_id')
                         ->join('roles', 'role_user.role_id', 'roles.id')
-                        ->select('users.name', 'users.email', 'roles.title')
+                        ->select('users.name', 'users.email', 'users.profile_photo_path', 'roles.title')
                         ->where('ukm_id', Auth::user()->ukm_id)
                         ->get();
     @endphp
@@ -88,6 +88,7 @@
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nama</th>
+                <th scope="col">Image</th>
                 <th scope="col">Email</th>
                 <th scope="col">Role</th>
               </tr>
@@ -98,6 +99,7 @@
                   <tr>
                     <td scope="row">{{ $i++ }}</td>
                     <td>{{ $row->name }}</td>
+                    <td><img style="width: 5rem;" src="{{ (!empty($row->profile_photo_path)) ? asset($row->profile_photo_path) : url('image/no_image.jpg') }}" class="square-image" alt=""></td>
                     <td>{{ $row->email }}</td>
                     <td>{{ $row->title }}</td>
                   </tr>

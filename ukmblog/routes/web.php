@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserSettingController;
+use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\ExtraController;
 use App\Http\Controllers\Frontend\UkmPendaftarController;
 use App\Http\Controllers\Frontend\UserPendaftarController;
@@ -22,10 +23,6 @@ use App\Http\Controllers\Backend\Admin\PengaturanController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('main.index');
-});
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function() {
     if(Auth::user()->ukm_id == NULL)
@@ -118,6 +115,10 @@ Route::get('/pengaturan/pendaftaran/deactive/{id}', [PengaturanController::class
 
 
 //*=============== FRONTEND ===============*//
+// halaman utama
+Route::get('/', [FrontendController::class, 'halamanUtama']);
+
+// ukm
 Route::get('/nama-ukm', [ExtraController::class, 'halamanUkm'])->name('hal.ukm');
 Route::get('/daftar-ukm', [ExtraController::class, 'daftarUkm'])->name('daftar.ukm');
 Route::get('/buka-ukm', [ExtraController::class, 'bukaUkm'])->name('buka.ukm');

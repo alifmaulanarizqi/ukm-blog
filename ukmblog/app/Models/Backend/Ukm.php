@@ -22,4 +22,8 @@ class Ukm extends Model
         'livetv',
         'open_registration',
     ];
+
+    public function post() {
+        return $this->hasMany(Post::class, 'ukm_id', 'id');
+    }
 }

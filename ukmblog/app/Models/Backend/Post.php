@@ -26,4 +26,8 @@ class Post extends Model
     public function kategori() {
         return $this->belongsTo(Kategori::class);
     }
+
+    public function ukm() {
+        return $this->belongsTo(Ukm::class);
+    }
 }
