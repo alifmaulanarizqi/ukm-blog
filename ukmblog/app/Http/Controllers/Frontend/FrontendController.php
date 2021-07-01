@@ -10,8 +10,9 @@ use App\Models\Backend\Post;
 class FrontendController extends Controller
 {
     public function halamanUtama() {
+        $banner = Post::select('id', 'title', 'image', 'konten')->where('headline_utama', 1)->get();
         $ukm_section = Ukm::select('id', 'ukm_name', 'image')->get();
         $post_section = Post::latest()->limit(8)->get();
-        return view('main.index', compact('ukm_section', 'post_section'));
+        return view('main.index', compact('banner', 'ukm_section', 'post_section'));
     }
 }

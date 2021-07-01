@@ -8,38 +8,17 @@
 
     <div class="carousel-inner" role="listbox">
 
-      <!-- Slide 1 -->
-      <div class="carousel-item active" style="background-image: url({{ asset('frontend_template/assets/images/Screenshot376.png') }});">
-        <div class="carousel-container">
-          <div class="carousel-content animate__animated animate__fadeInUp">
-            <h2>Welcome to <span>Company</span></h2>
-            <p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-            <div class="text-center"><a href="" class="btn-more">Read More</a></div>
+      @foreach($banner as $row)
+        <div class="carousel-item {{ $loop->first ? ' active' : '' }}" style="background-image: url({{ (!empty($row->image)) ? asset($row->image) : url('image/post/post_default.png') }});">
+          <div class="carousel-container">
+            <div class="carousel-content animate__animated animate__fadeInUp">
+              <h2>{{ $row->title }}</h2>
+              <div>{!! Str::limit($row->konten) !!}</div>
+              <div class="text-center"><a href="" class="btn-more">Read More</a></div>
+            </div>
           </div>
         </div>
-      </div>
-
-      <!-- Slide 2 -->
-      <div class="carousel-item" style="background-image: url({{ asset('frontend_template/assets/images/Screenshot378.png') }});">
-        <div class="carousel-container">
-          <div class="carousel-content animate__animated animate__fadeInUp">
-            <h2>Lorem Ipsum Dolor</h2>
-            <p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-            <div class="text-center"><a href="" class="btn-more">Read More</a></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Slide 3 -->
-      <div class="carousel-item" style="background-image: url({{ asset('frontend_template/assets/images/Screenshot379.png') }});">
-        <div class="carousel-container">
-          <div class="carousel-content animate__animated animate__fadeInUp">
-            <h2>Sequi ea ut et est quaerat</h2>
-            <p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-            <div class="text-center"><a href="" class="btn-more">Read More</a></div>
-          </div>
-        </div>
-      </div>
+      @endforeach
 
     </div>
 
