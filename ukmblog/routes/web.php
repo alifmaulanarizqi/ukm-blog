@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserSettingController;
 use App\Http\Controllers\Frontend\FrontendController;
-use App\Http\Controllers\Frontend\ExtraController;
 use App\Http\Controllers\Frontend\UkmPendaftarController;
 use App\Http\Controllers\Frontend\UserPendaftarController;
 use App\Http\Controllers\Backend\Dev\UkmController;
@@ -119,9 +118,9 @@ Route::get('/pengaturan/pendaftaran/deactive/{id}', [PengaturanController::class
 Route::get('/', [FrontendController::class, 'halamanUtama']);
 
 // ukm
-Route::get('/nama-ukm', [ExtraController::class, 'halamanUkm'])->name('hal.ukm');
-Route::get('/daftar-ukm', [ExtraController::class, 'daftarUkm'])->name('daftar.ukm');
-Route::get('/buka-ukm', [ExtraController::class, 'bukaUkm'])->name('buka.ukm');
+Route::get('/u/{slug}', [FrontendController::class, 'halamanUkm'])->name('hal.ukm');
+Route::get('/daftar-ukm', [FrontendController::class, 'daftarUkm'])->name('daftar.ukm');
+Route::get('/buka-ukm', [FrontendController::class, 'bukaUkm'])->name('buka.ukm');
 
 // pendaftaran ukm
 Route::post('/pendaftaran-ukm', [UkmPendaftarController::class, 'pendaftaranUkm'])->name('pendaftaran.ukm');

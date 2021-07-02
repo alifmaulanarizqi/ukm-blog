@@ -23,6 +23,10 @@ class Post extends Model
         'tanggal',
     ];
 
+    public function user() {
+        return $this->belongsTo(\App\Models\User::class);
+    }
+
     public function kategori() {
         return $this->belongsTo(Kategori::class);
     }

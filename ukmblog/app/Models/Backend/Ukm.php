@@ -26,4 +26,8 @@ class Ukm extends Model
     public function post() {
         return $this->hasMany(Post::class, 'ukm_id', 'id');
     }
+
+    public function kategori() {
+        return $this->hasMany(Kategori::class, 'ukm_id', 'id');
+    }
 }

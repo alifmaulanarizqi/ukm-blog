@@ -17,9 +17,17 @@
             UKM
           </a>
           <div class="dropdown-menu dropdown-menu-custom" aria-labelledby="navbarUkmDropdown">
-            <a class="dropdown-item" href="{{ route('hal.ukm') }}">UKM 1</a>
-            <a class="dropdown-item" href="{{ route('hal.ukm') }}">UKM 2</a>
-            <a class="dropdown-item" href="{{ route('hal.ukm') }}">UKM 3</a>
+
+            @php
+              use App\Models\Backend\Ukm;
+
+              $ukm_section = Ukm::select('id', 'ukm_name', 'image', 'slug')->get();
+            @endphp
+
+            @foreach($ukm_section as $row)
+              <a class="dropdown-item" href="{{ route('hal.ukm', $row->slug) }}">{{ $row->ukm_name }}</a>
+            @endforeach
+
           </div>
         </li>
         <li class="nav-item">
@@ -29,7 +37,11 @@
           <a href="{{ route('buka.ukm') }}" class="nav-link m-2 menu-item">Buka UKM</a>
         </li>
         <li class="nav-item">
-          <a href="{{ route('login') }}" target="_blank" class="nav-link m-2 menu-item">Login</a>
+          @if(Auth::id() == NULL)
+            <a href="{{ route('login') }}" target="_blank" class="nav-link m-2 menu-item">Login</a>
+          @else
+            <a href="{{ route('dashboard') }}" target="_blank" class="nav-link m-2 menu-item">Dashboard</a>
+          @endif
         </li>
       </ul>
     </div>

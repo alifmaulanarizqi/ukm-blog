@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Frontend\UkmPendaftar;
 use App\Models\Backend\Ukm;
+use App\Models\Backend\Post;
+use App\Models\Backend\Kategori;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\DB;
@@ -102,6 +104,7 @@ class UkmController extends Controller
         $id = $_POST['deleteId'];
         $ukm = Ukm::find($id);
         $delete_user = User::where('ukm_id', $ukm->id)->delete();
+        $delete_post = Post::where('ukm_id', $ukm->id)->delete();
         $delete_ukm = $ukm->delete();
 
         $notif = array(
@@ -117,6 +120,7 @@ class UkmController extends Controller
 
         $ukm = Ukm::withTrashed()->find($id);
         $restore_user = User::where('ukm_id', $ukm->id)->restore();
+        $restore_post = Post::where('ukm_id', $ukm->id)->restore();
         $restore_ukm = $ukm->restore();
 
         $notif = array(

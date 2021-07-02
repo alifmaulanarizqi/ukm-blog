@@ -5,30 +5,41 @@
         <h5 class="font-weight-bold">Kategori</h5>
         <div class="categories">
           <ul>
-            <li><a href="#">General <span>(25)</span></a></li>
-            <li><a href="#">Lifestyle <span>(12)</span></a></li>
-            <li><a href="#">Travel <span>(5)</span></a></li>
-            <li><a href="#">Design <span>(22)</span></a></li>
-            <li><a href="#">Creative <span>(8)</span></a></li>
-            <li><a href="#">Educaion <span>(14)</span></a></li>
+
+            @foreach($kategori as $row)
+              <li><a href="#">{{ $row->kategori }}</a></li>
+            @endforeach
+
           </ul>
         </div>
       </div>
-      <div class="sidebar-part mt-4">
-        <h5 class="font-weight-bold">Live TV</h5>
-        <div class="livetv">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/msBvP4gwmnc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      @if($ukm->livetv != NULL)
+        <div class="sidebar-part mt-4">
+          <h5 class="font-weight-bold">Live TV</h5>
+          <div class="livetv">
+            {!! $ukm->livetv !!}
+          </div>
         </div>
-      </div>
+      @endif
+      @if($ukm->instagram != NULL || $ukm->facebook != NULL || $ukm->twitter != NULL || $ukm->youtube != NULL)
       <div class="sidebar-part mt-4">
         <h5 class="font-weight-bold">Sosial Media</h5>
         <div class="social-media-ukm">
-          <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
-          <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
-          <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
-          <a href="#"><i class="fab fa-youtube fa-2x"></i></a>
+            @if($ukm->instagram != NULL)
+              <a href="{{ $ukm->instagram }}" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
+            @endif
+            @if($ukm->facebook != NULL)
+              <a href="{{ $ukm->facebook }}" target="_blank"><i class="fab fa-facebook fa-2x"></i></a>
+            @endif
+            @if($ukm->twitter != NULL)
+              <a href="{{ $ukm->twitter }}" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
+            @endif
+            @if($ukm->youtube != NULL)
+              <a href="{{ $ukm->youtube }}" target="_blank"><i class="fab fa-youtube fa-2x"></i></a>
+            @endif
         </div>
       </div>
+      @endif
     </div>
   </section>
 </div><!-- End Sidebar -->

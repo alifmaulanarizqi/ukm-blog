@@ -9,15 +9,15 @@
     <div class="carousel-inner" role="listbox">
 
       @foreach($banner as $row)
-        <div class="carousel-item {{ $loop->first ? ' active' : '' }}" style="background-image: url({{ (!empty($row->image)) ? asset($row->image) : url('image/post/post_default.png') }});">
-          <div class="carousel-container">
-            <div class="carousel-content animate__animated animate__fadeInUp">
-              <h2>{{ $row->title }}</h2>
-              <div>{!! Str::limit($row->konten) !!}</div>
-              <div class="text-center"><a href="" class="btn-more">Read More</a></div>
+          <div class="carousel-item {{ $loop->first ? ' active' : '' }}" style="background-image: url({{ (!empty($row->image)) ? asset($row->image) : url('image/posts/post_default.png') }});">
+            <div class="carousel-container">
+              <div class="carousel-content animate__animated animate__fadeInUp">
+                <h2>{{ $row->title }}</h2>
+                <div>{!! Str::limit($row->konten) !!}</div>
+                <div class="text-center"><a href="" class="btn-more">Read More</a></div>
+              </div>
             </div>
           </div>
-        </div>
       @endforeach
 
     </div>
@@ -47,7 +47,7 @@
 
         @foreach($ukm_section as $row)
             <div class="col-sm-6 col-lg-3">
-              <a href="#">
+              <a href="{{ route('hal.ukm', $row->slug) }}">
                 <div class="container-img my-3">
                   <img src="{{ (!empty($row->image)) ? asset($row->image) : url('image/ukms/ukm_default.png') }}" class="ukm-image-rectangle" alt="">
                   <div class="content">
@@ -76,7 +76,7 @@
         @foreach($post_section as $row)
           <div class="col-sm-6 col-lg-3 my-3">
             <a href="#">
-              <img src="{{ (!empty($row->image)) ? asset($row->image) : url('image/post/post_default.png') }}" class="ukm-image-rectangle" alt="">
+              <img src="{{ (!empty($row->image)) ? asset($row->image) : url('image/posts/post_default.png') }}" class="ukm-image-rectangle" alt="">
             </a>
             <a href="#" class="badge badge-custom my-3">{{ $row->ukm->ukm_name }}</a>
             <small class="ml-2 text-dark">{{ $row->tanggal }}</small>
