@@ -137,6 +137,7 @@ class UkmController extends Controller
         $id = $_POST['deleteId'];
 
         $ukm = Ukm::withTrashed()->find($id);
+        $delete_post = Post::where('ukm_id', $ukm->id)->forceDelete();
         $delete_user = User::where('ukm_id', $ukm->id)->forceDelete();
         $delete_ukm = $ukm->forceDelete();
 

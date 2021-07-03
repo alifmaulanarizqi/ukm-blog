@@ -18,7 +18,9 @@ class FrontendController extends Controller
         return view('main.index', compact('banner', 'ukm_section', 'post_section'));
     }
 
-    public function halamanUkm($slug) {
+    public function halamanUkm(Request $request, $slug) {
+        $request->session()->put('ukm_slug', $slug);
+
         $ukm = Ukm::where('slug', $slug)->first();
         $banner = Post::whereHas('ukm', function($query) use ($slug) {
             $query->where('slug', $slug);
@@ -26,10 +28,19 @@ class FrontendController extends Controller
         $post_terbaru = Post::whereHas('ukm', function($query) use ($slug) {
             $query->where('slug', $slug);
         })->latest()->limit(9)->get();
-        $kategori = Kategori::whereHas('ukm', function($query) use ($slug) {
-          $query->where('slug', $slug);
-        })->get();
-        return view('main.ukm', compact('banner', 'ukm', 'post_terbaru', 'kategori'));
+
+        return view('main.ukm', compact('banner', 'ukm', 'post_terbaru'));
+    }
+
+    public function halamanKategori(Request $request, $slug) {
+        $request->session()->put('kategori_slug', $slug);
+
+        $post = Post::whereHas('kategori', function($query) use ($slug) {
+            $query->where('slug', $slug);
+        })->latest()->get();
+        $kategori = Kategori::select('id', 'kategori', 'slug')->where('slug', $slug)->first();
+        $ukm = Ukm::select('id', 'ukm_name')->where('slug', session()->get('ukm_slug'))->first();
+        return view('main.kategori', compact('ukm', 'kategori', 'post'));
     }
 
     public function daftarUkm() {
@@ -40,4 +51,5 @@ class FrontendController extends Controller
     public function bukaUkm() {
         return view('main.buka_ukm');
     }
+
 }

@@ -1,3 +1,15 @@
+@php
+    use App\Models\Backend\Kategori;
+    use App\Models\Backend\Ukm;
+
+    $ukm_slug = Session::get('ukm_slug');
+
+    $ukm = Ukm::where('slug', $ukm_slug)->first();
+    $kategori = Kategori::whereHas('ukm', function($query) use ($ukm_slug) {
+        $query->where('slug', $ukm_slug);
+    })->get();
+@endphp
+
 <div class="col-lg-4 col-12 pr-0 mb-5 padding-sidebar">
   <section id="sidebar" class="py-lg-5">
     <div class="sidebar-container">
@@ -7,7 +19,7 @@
           <ul>
 
             @foreach($kategori as $row)
-              <li><a href="#">{{ $row->kategori }}</a></li>
+              <li><a href="{{ route('hal.kategori', $row->slug) }}">{{ $row->kategori }}</a></li>
             @endforeach
 
           </ul>
