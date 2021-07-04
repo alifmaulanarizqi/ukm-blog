@@ -33,13 +33,13 @@
 
           @foreach($post as $row)
             <div class="col-sm-6 col-lg-4 my-3">
-              <a href="#">
+              <a href="{{ route('hal.post', $row->slug) }}">
                 <img src="{{ (!empty($row->image)) ? asset($row->image) : url('image/posts/post_default.png') }}" class="img-fluid" alt="">
               </a>
               <span class="badge badge-custom my-3">{{ $row->user->name }}</span>
               <small class="ml-2 text-dark">{{ $row->tanggal }}</small>
-              <a href="#"><h5 class="judul-post">{{ $row->title }}</h5></a>
-              <p class="desc-post">{!! Str::limit($row->kontent, 100) !!}</p>
+              <a href="{{ route('hal.post', $row->slug) }}"><h5 class="judul-post">{{ $row->title }}</h5></a>
+              <div class="desc-post">{!! Str::limit($row->konten, 100) !!}</div>
             </div>
           @endforeach
 

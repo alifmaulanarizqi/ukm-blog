@@ -675,6 +675,12 @@ Post
   padding: 25px;
 }
 
+.post-image-rectangle {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 @media only screen and (max-width: 992px) {
   .padding-post {
     padding-right: 0;

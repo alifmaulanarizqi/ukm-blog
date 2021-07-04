@@ -125,6 +125,8 @@ Route::get('/buka-ukm', [FrontendController::class, 'bukaUkm'])->name('buka.ukm'
 // kategori
 Route::get('/k/{slug}', [FrontendController::class, 'halamanKategori'])->name('hal.kategori');
 
+// post
+Route::get('/p/{slug}', [FrontendController::class, 'halamanPost'])->name('hal.post');
 
 // pendaftaran ukm
 Route::post('/pendaftaran-ukm', [UkmPendaftarController::class, 'pendaftaranUkm'])->name('pendaftaran.ukm');

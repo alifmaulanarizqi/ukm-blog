@@ -75,12 +75,12 @@
 
         @foreach($post_section as $row)
           <div class="col-sm-6 col-lg-3 my-3">
-            <a href="#">
+            <a href="{{ route('hal.post', $row->slug) }}">
               <img src="{{ (!empty($row->image)) ? asset($row->image) : url('image/posts/post_default.png') }}" class="ukm-image-rectangle" alt="">
             </a>
-            <a href="#" class="badge badge-custom my-3">{{ $row->ukm->ukm_name }}</a>
+            <a href="{{ route('hal.ukm', $row->ukm->slug) }}" class="badge badge-custom my-3">{{ $row->ukm->ukm_name }}</a>
             <small class="ml-2 text-dark">{{ $row->tanggal }}</small>
-            <a href="#"><h5 class="judul-post">{{ $row->title }}</h5></a>
+            <a href="{{ route('hal.post', $row->slug) }}"><h5 class="judul-post">{{ $row->title }}</h5></a>
             <div class="desc-post">{!! Str::limit($row->konten, 100) !!}</div>
           </div>
         @endforeach

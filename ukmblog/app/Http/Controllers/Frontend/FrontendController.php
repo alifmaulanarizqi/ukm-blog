@@ -43,6 +43,17 @@ class FrontendController extends Controller
         return view('main.kategori', compact('ukm', 'kategori', 'post'));
     }
 
+    public function halamanPost(Request $request, $slug) {
+        $request->session()->put('post_slug', $slug);
+
+        $post = Post::where('slug', $slug)->first();
+        $request->session()->put('ukm_slug', $post->ukm->slug);
+        $ukm = Ukm::select('ukm_name')->where('slug', session()->get('ukm_slug'))->first();
+        $request->session()->put('kategori_slug', $post->kategori->slug);
+        $kategori = Kategori::select('kategori')->where('slug', $post->kategori->slug)->first();
+        return view('main.post', compact('ukm', 'kategori', 'post'));
+    }
+
     public function daftarUkm() {
         $open_register_ukms = Ukm::where('open_registration', 1)->get();
         return view('main.daftar_ukm', compact('open_register_ukms'));
