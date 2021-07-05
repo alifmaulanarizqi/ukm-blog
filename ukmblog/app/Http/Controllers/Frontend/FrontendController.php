@@ -50,8 +50,9 @@ class FrontendController extends Controller
         $request->session()->put('ukm_slug', $post->ukm->slug);
         $ukm = Ukm::select('ukm_name')->where('slug', session()->get('ukm_slug'))->first();
         $request->session()->put('kategori_slug', $post->kategori->slug);
-        $kategori = Kategori::select('kategori')->where('slug', $post->kategori->slug)->first();
-        return view('main.post', compact('ukm', 'kategori', 'post'));
+        $kategori = Kategori::select('id', 'kategori')->where('slug', $post->kategori->slug)->first();
+        $related_post = Post::where('kategori_id', $kategori->id)->where('slug', '!=', $slug)->limit(6)->get();
+        return view('main.post', compact('ukm', 'kategori', 'post', 'related_post'));
     }
 
     public function daftarUkm() {

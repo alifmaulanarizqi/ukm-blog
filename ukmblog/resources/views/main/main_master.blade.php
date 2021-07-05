@@ -18,6 +18,9 @@
   <!-- Toastr -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g==" crossorigin="anonymous" />
 
+  <!-- Sharethis Button -->
+  <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=60e3098234c592001374227c&product=inline-share-buttons" async="async"></script>
+
   <title>UKM Blog</title>
 </head>
 

@@ -39,7 +39,61 @@
           <div class="mt-3">
             {!! $post->konten !!}
           </div>
+
+          <!-- Sharethis Button -->
+          <div class="sharethis-inline-share-buttons pb-4"></div>
+          <!-- End Sharethis Button -->
+
+          <!-- Disqus Comment -->
+          <div class="section-title pt-4">
+            <h4 class="font-weight-bold section-title-ukm-home">Comment</h4>
+          </div>
+          <div id="disqus_thread" class="pb-4"></div>
+          <script>
+              /**
+              *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+              *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+              /*
+              var disqus_config = function () {
+              this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+              this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+              };
+              */
+              (function() { // DON'T EDIT BELOW THIS LINE
+              var d = document, s = d.createElement('script');
+              s.src = 'https://ukm-blog.disqus.com/embed.js';
+              s.setAttribute('data-timestamp', +new Date());
+              (d.head || d.body).appendChild(s);
+              })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+          <!-- End Disqus Comment -->
+
+          <!-- Related Post -->
+          <div class="pt-4">
+            <div class="section-title">
+              <h4 class="font-weight-bold section-title-ukm-home">Related Post</h4>
+            </div>
+
+            <div class="row mt-4 text-left">
+
+              @foreach($related_post as $row)
+                <div class="col-sm-6 col-lg-4 my-3">
+                  <a href="{{ route('hal.post', $row->slug) }}">
+                    <img src="{{ (!empty($row->image)) ? asset($row->image) : url('image/posts/post_default.png') }}" class="img-fluid" alt="">
+                  </a>
+                  <span class="badge badge-custom my-3">{{ !empty($row->user->name) ? $row->user->name : 'User Deleted'}}</span>
+                  <small class="ml-2 text-dark">{{ $row->tanggal }}</small>
+                  <a href="{{ route('hal.post', $row->slug) }}"><h5 class="judul-post">{{ $row->title }}</h5></a>
+                  <div class="desc-post">{!! Str::limit($row->konten, 100) !!}</div>
+                </div>
+              @endforeach
+
+            </div>
+          </div><!-- End Related Post -->
+
         </div>
+
     </section><!-- End Post Section -->
   </div> <!-- End Konten -->
 
