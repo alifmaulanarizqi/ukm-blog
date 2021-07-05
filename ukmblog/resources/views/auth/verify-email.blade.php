@@ -23,7 +23,7 @@
               </div>
 
               @if (session('status') == 'verification-link-sent')
-                  <div class="mb-4 font-medium text-sm text-green-600">
+                  <div class="mb-4 font-medium text-sm text-primary mt-3">
                       {{ __('Link verifikasi baru telah dikirim ke alamat email yang Anda isikan') }}
                   </div>
               @endif
@@ -32,13 +32,18 @@
                 @csrf
                 <div class="d-flex justify-content-between">
                   <div class="form-group ">
-                    <button class="btn btn-primary btn-block mt-4" type="submit"><a href="index.html" class="text-white link-style-none">Kirim Link Reset Password</a></button>
+                    <button class="btn btn-primary btn-block mt-4" type="submit">Kirim Ulang Link Verifikasi</button>
                   </div>
+              </form>
                   <div class="d-flex form-group align-items-center">
-                    <a href="{{ route('logout') }}">Log Out</a>
+                    <form action="{{ route('logout') }}" method="post">
+                      @csrf
+                      <button type="submit" class="btn btn-primary mt-4">
+                          {{ __('Log Out') }}
+                      </button>
+                    </form>
                   </div>
                 </div>
-              </form>
             </div>
           </div>
         </div>
