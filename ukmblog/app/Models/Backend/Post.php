@@ -5,11 +5,11 @@ namespace App\Models\Backend;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Post extends Model
 {
-    use HasFactory;
-    use SoftDeletes;
+    use HasFactory, SoftDeletes, Sluggable;
 
     protected $fillable = [
         'kategori_id',
@@ -21,6 +21,7 @@ class Post extends Model
         'headline_utama',
         'headline_ukm',
         'tanggal',
+        'slug'
     ];
 
     public function user() {
@@ -33,5 +34,13 @@ class Post extends Model
 
     public function ukm() {
         return $this->belongsTo(Ukm::class);
+    }
+
+    public function sluggable(): array {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
     }
 }

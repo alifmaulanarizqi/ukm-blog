@@ -97,8 +97,10 @@ class UserController extends Controller
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
 
         $id = $_POST['deleteId'];
-
-        $anggota = User::withTrashed()->find($id)->forceDelete();
+        $anggota = User::withTrashed()->find($id);
+        if($anggota->profile_photo_path != NULL)
+            unlink($anggota->profile_photo_path);
+        $delete_anggota = $anggota->forceDelete();
 
         $notif = array(
             'message' => 'Anggota berhasil dihapus',

@@ -13,6 +13,7 @@ use App\Models\Backend\Kategori;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\DB;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class UkmController extends Controller
 {
@@ -39,10 +40,12 @@ class UkmController extends Controller
         abort_if(Gate::denies('ukm_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
 
         $ukm_pendaftar = UkmPendaftar::find($id);
+        $slug = SlugService::createSlug(Ukm::class, 'slug', $ukm_pendaftar->ukm_name);
 
         $ukm = new Ukm();
         $ukm->ukm_name = $ukm_pendaftar->ukm_name;
         $ukm->description = $ukm_pendaftar->description;
+        $ukm->slug = $slug;
         $ukm->save();
 
         $user = new User();
@@ -102,11 +105,10 @@ class UkmController extends Controller
         abort_if(Gate::denies('ukm_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
 
         $id = $_POST['deleteId'];
-        $ukm = Ukm::find($id);
-        $delete_user = User::where('ukm_id', $ukm->id)->delete();
-        $delete_kategori = Kategori::where('ukm_id', $ukm->id)->delete();
-        $delete_post = Post::where('ukm_id', $ukm->id)->delete();
-        $delete_ukm = $ukm->delete();
+        $delete_user = User::where('ukm_id', $id)->delete();
+        $delete_kategori = Kategori::where('ukm_id', $id)->delete();
+        $delete_post = Post::where('ukm_id', $id)->delete();
+        $delete_ukm = Ukm::find($id)->delete();
 
         $notif = array(
             'message' => 'UKM berhasil dimasukan ke keranjang sampah',
@@ -138,10 +140,21 @@ class UkmController extends Controller
 
         $id = $_POST['deleteId'];
 
-        $ukm = Ukm::withTrashed()->find($id);
-        $delete_kategori = Kategori::where('ukm_id', $ukm->id)->forceDelete();
-        $delete_post = Post::where('ukm_id', $ukm->id)->forceDelete();
-        $delete_user = User::where('ukm_id', $ukm->id)->forceDelete();
+        $post = Post::onlyTrashed()->where('ukm_id', $id)->first();
+        if($post->image != NULL)
+            unlink($post->image);
+        $delete_post = $post->forceDelete();
+
+        $delete_kategori = Kategori::onlyTrashed()->where('ukm_id', $id)->forceDelete();
+
+        $user = User::onlyTrashed()->where('ukm_id', $id)->first();
+        if($user->profile_photo_path != NULL)
+            unlink($user->profile_photo_path);
+        $delete_user = $user->forceDelete();
+
+        $ukm = Ukm::onlyTrashed()->find($id);
+        if($ukm->image != NULL)
+            unlink($ukm->image);
         $delete_ukm = $ukm->forceDelete();
 
         $notif = array(

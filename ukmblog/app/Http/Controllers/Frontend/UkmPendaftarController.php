@@ -11,10 +11,10 @@ class UkmPendaftarController extends Controller
 {
     public function pendaftaranUkm(Request $request) {
         $validated = $request->validate([
-            'ukm_name' => 'required|unique:ukms|max:255',
+            'ukm_name' => 'required|max:255',
             'description' => 'required',
             'leader' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:users',
             'password' => 'required|min:8|confirmed',
         ]);
 

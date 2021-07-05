@@ -7,8 +7,10 @@ use Illuminate\Http\Request;
 // use App\Models\Role;
 // use App\Models\User;
 use App\Models\Backend\Kategori;
+use App\Models\Backend\Post;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Auth;
 
 class KategoriController extends Controller
@@ -36,10 +38,12 @@ class KategoriController extends Controller
 
         $validated = $request->validate([
             'kategori' => 'required|max:255',
+            'slug' => 'required|alpha_dash|unique:kategoris',
         ]);
 
         $kategori = new Kategori;
         $kategori->kategori = $request->kategori;
+        $kategori->slug = $request->slug;
         $kategori->ukm_id = Auth::user()->ukm_id;
         $kategori->save();
 
@@ -63,10 +67,12 @@ class KategoriController extends Controller
 
         $validated = $request->validate([
             'kategori' => 'required|max:255',
+            'slug' => 'required|alpha_dash|unique:kategoris',
         ]);
 
         $update = Kategori::find($id)->update([
           'kategori' => $request->kategori,
+          'slug' => $request->slug,
         ]);
 
         $notif = array(
@@ -81,7 +87,8 @@ class KategoriController extends Controller
         abort_if(Gate::denies('kategori_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
 
         $id = $_POST['deleteId'];
-        $delete = Kategori::find($id)->delete();
+        $delete_post = Post::where('kategori_id', $id)->delete();
+        $delete_kategori = Kategori::find($id)->delete();
 
         $notif = array(
             'message' => 'Kategori berhasil dimasukan ke keranjang sampah',
@@ -94,11 +101,12 @@ class KategoriController extends Controller
     public function restoreKategori($id) {
         abort_if(Gate::denies('kategori_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
 
-        $restore = Kategori::onlyTrashed()->find($id)->restore();
+        $restore_post = Post::onlyTrashed()->where('kategori_id', $id)->restore();
+        $restore_kategori = Kategori::onlyTrashed()->find($id)->restore();
 
         $notif = array(
             'message' => 'Kategori berhasil direstore',
-            'alert-type' => 'warning',
+            'alert-type' => 'info',
         );
 
         return Redirect()->route('kategori')->with($notif);
@@ -108,7 +116,11 @@ class KategoriController extends Controller
         abort_if(Gate::denies('kategori_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
 
         $id = $_POST['deleteId'];
-        $delete = Kategori::onlyTrashed()->find($id)->forceDelete();
+        $post = Post::onlyTrashed()->where('kategori_id', $id)->first();
+        if($post->image != NULL)
+            unlink($post->image);
+        $delete_post = $post->forceDelete();
+        $delete_kategori = Kategori::onlyTrashed()->find($id)->forceDelete();
 
         $notif = array(
             'message' => 'Kategori berhasil dihapus',
@@ -116,6 +128,12 @@ class KategoriController extends Controller
         );
 
         return Redirect()->route('kategori')->with($notif);
+    }
+
+    public function checkSlug(Request $request) {
+        $slug = SlugService::createSlug(Kategori::class, 'slug', $request->kategori);
+
+        return response()->json(['slug' => $slug]);
     }
 
 }

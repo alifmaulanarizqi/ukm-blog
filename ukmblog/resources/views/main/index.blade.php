@@ -14,7 +14,7 @@
               <div class="carousel-content animate__animated animate__fadeInUp">
                 <h2>{{ $row->title }}</h2>
                 <div>{!! Str::limit($row->konten) !!}</div>
-                <div class="text-center"><a href="" class="btn-more">Read More</a></div>
+                <div class="text-center"><a href="{{ route('hal.post', $row->slug) }}" class="btn-more">Read More</a></div>
               </div>
             </div>
           </div>

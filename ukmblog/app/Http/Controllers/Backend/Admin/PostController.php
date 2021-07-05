@@ -10,6 +10,7 @@ use App\Models\Backend\Post;
 use App\Models\Backend\Kategori;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Auth;
 use Image;
 
@@ -41,6 +42,7 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'image' => 'mimes:jpg,jpeg,png',
             'kategori_id' =>'required',
+            'slug' => 'required|alpha_dash|unique:posts',
         ]);
 
         $post = new Post;
@@ -48,6 +50,7 @@ class PostController extends Controller
         $post->ukm_id = Auth::user()->ukm_id;
         $post->user_id = Auth::id();
         $post->title = $request->title;
+        $post->slug = $request->slug;
         $post->konten = $request->konten;
         $post->headline_utama = $request->headline_utama;
         $post->headline_ukm = $request->headline_ukm;
@@ -90,11 +93,13 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'image' => 'mimes:jpg,jpeg,png',
             'kategori_id' =>'required',
+            'slug' => 'required|alpha_dash|unique:posts',
         ]);
 
         $update = Post::find($id)->update([
             'kategori_id' => $request->kategori_id,
             'title' => $request->title,
+            'slug' => $request->slug,
             'konten' => $request->konten,
             'headline_utama' => $request->headline_utama,
             'headline_ukm' => $request->headline_ukm,
@@ -172,5 +177,11 @@ class PostController extends Controller
         );
 
         return Redirect()->route('post')->with($notif);
+    }
+
+    public function checkSlug(Request $request) {
+        $slug = SlugService::createSlug(Post::class, 'slug', $request->title);
+
+        return response()->json(['slug' => $slug]);
     }
 }

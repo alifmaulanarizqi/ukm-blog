@@ -56,6 +56,7 @@ Route::post('/ukm/delete', [UkmController::class, 'deleteUkm'])->name('delete.uk
 
 //*=============== BACKEND UNTUK KETUA DAN ADMIN ===============*//
 // kategori
+Route::get('/kategori/check-slug', [KategoriController::class, 'checkSlug'])->name('checkslug.kategori');
 Route::get('/kategori/all', [KategoriController::class, 'index'])->name('kategori');
 Route::get('/kategori/add', [KategoriController::class, 'addKategori'])->name('add.kategori');
 Route::post('/kategori/store', [KategoriController::class, 'storeKategori'])->name('store.kategori');
@@ -66,6 +67,7 @@ Route::get('/kategori/restore/{id}', [KategoriController::class, 'restoreKategor
 Route::post('/kategori/delete', [KategoriController::class, 'deleteKategori'])->name('delete.kategori');
 
 // post
+Route::get('/post/check-slug', [PostController::class, 'checkSlug'])->name('checkslug.post');
 Route::get('/post/all', [PostController::class, 'index'])->name('post');
 Route::get('/post/add', [PostController::class, 'addPost'])->name('add.post');
 Route::post('/post/store', [PostController::class, 'storePost'])->name('store.post');

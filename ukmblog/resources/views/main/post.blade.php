@@ -32,7 +32,7 @@
           <h4 class="font-weight-bold">{{ $post->title }}</h4>
           <div class="author-date-post mt-3">
             <ul class="">
-              <li class=""><i class="fas fa-user"></i> {{ $post->user->name }}</li>
+              <li class=""><i class="fas fa-user"></i> {{ !empty($post->user->name) ? $post->user->name : 'User Deleted'}}</li>
               <li class="ml-4"><i class="far fa-clock"></i> {{ $post->tanggal }}</li>
             </ul>
           </div>

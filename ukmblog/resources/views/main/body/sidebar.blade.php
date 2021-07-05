@@ -2,6 +2,9 @@
     use App\Models\Backend\Kategori;
     use App\Models\Backend\Ukm;
 
+    $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+    $urlParts = explode('/', str_ireplace(array('http://', 'https://'), '', $actual_link));
+
     $ukm_slug = Session::get('ukm_slug');
 
     $ukm = Ukm::where('slug', $ukm_slug)->first();
@@ -11,7 +14,7 @@
 @endphp
 
 <div class="col-lg-4 col-12 pr-0 mb-5 padding-sidebar">
-  <section id="sidebar" class="py-lg-5">
+  <section id="sidebar" class="<?php if($urlParts[1] == 'p' || $urlParts[1] == 'k') echo ""; else echo "py-lg-5"; ?> ">
     <div class="sidebar-container">
       <div class="sidebar-part">
         <h5 class="font-weight-bold">Kategori</h5>

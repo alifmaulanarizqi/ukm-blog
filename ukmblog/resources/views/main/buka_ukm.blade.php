@@ -26,42 +26,42 @@
             <form action="{{ route('pendaftaran.ukm') }}" method="post" class="form-text">
               @csrf
               <div class="form-group">
-                <label for="ukm_name" class="font-weight-bold">Nama UKM</label>
+                <label for="ukm_name" class="font-weight-bold">Nama UKM <span class="text-danger">*</span></label>
                 <input type="text" name="ukm_name" class="form-control" id="ukm_name" placeholder="Masukan nama UKM">
                 @error('ukm_name')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
               </div>
               <div class="form-group">
-                <label for="descriptiion" class="font-weight-bold">Deskripsi UKM</label>
+                <label for="descriptiion" class="font-weight-bold">Deskripsi UKM <span class="text-danger">*</span></label>
                 <textarea name="description" id="descriptiion" class="form-control" rows="4" placeholder="Masukan deskripsi mengenai UKM"></textarea>
                 @error('description')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
               </div>
               <div class="form-group">
-                <label for="leader" class="font-weight-bold">Nama Akun</label>
+                <label for="leader" class="font-weight-bold">Nama Akun <span class="text-danger">*</span></label>
                 <input type="text" name="leader" class="form-control" id="leader" placeholder="Masukan nama pendaftar atau ketua">
                 @error('leader')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
               </div>
               <div class="form-group">
-                <label for="email" class="font-weight-bold">Email Akun</label>
+                <label for="email" class="font-weight-bold">Email Akun <span class="text-danger">*</span></label>
                 <input type="email" name="email" class="form-control" id="email" placeholder="Masukan email pendaftar atau ketua">
                 @error('email')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
               </div>
               <div class="form-group">
-                <label for="password" class="font-weight-bold">Password Akun</label>
+                <label for="password" class="font-weight-bold">Password Akun <span class="text-danger">*</span></label>
                 <input type="password" class="form-control" name="password" id="password" placeholder="Masukan password">
                 @error('password')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
               </div>
               <div class="form-group">
-                <label for="password_confirmation" class="font-weight-bold">Konfirmasi Password</label>
+                <label for="password_confirmation" class="font-weight-bold">Konfirmasi Password <span class="text-danger">*</span></label>
                 <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="Masukan ulang password">
                 @error('password_confirmation')
                     <span class="text-danger">{{ $message }}</span>

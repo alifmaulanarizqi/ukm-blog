@@ -14,14 +14,21 @@
         <form action="{{ route('store.post') }}" method="post" enctype="multipart/form-data">
           @csrf
           <div class="form-group">
-            <label for="title">Title</label>
+            <label for="title">Title <span class="text-danger">*</span></label>
             <input type="text" class="form-control" name="title" id="title" placeholder="Masukan judul post">
             @error('title')
                 <span class="text-danger">{{ $message }}</span>
             @enderror
           </div>
           <div class="form-group">
-            <label for="kategori_id">Kategori</label>
+            <label for="slug">URL Post <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" name="slug" id="slug" placeholder="Masukan url post">
+            @error('slug')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
+          </div>
+          <div class="form-group">
+            <label for="kategori_id">Kategori <span class="text-danger">*</span></label>
             <select class="form-control" name="kategori_id" id="kategori_id">
               <option disabled selected>--- Pilih Kategori ---</option>
 
@@ -88,6 +95,17 @@
             }
             reader.readAsDataURL(e.target.files['0']);
         });
+    });
+</script>
+
+<script>
+    $('#title').change(function(e) {
+      $.get('{{ route('checkslug.post') }}',
+        { 'title': $(this).val() },
+        function( data ) {
+          $('#slug').val(data.slug);
+        }
+      );
     });
 </script>
 
