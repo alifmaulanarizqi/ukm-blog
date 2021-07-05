@@ -48,7 +48,7 @@
           <div class="section-title pt-4">
             <h4 class="font-weight-bold section-title-ukm-home">Comment</h4>
           </div>
-          <div id="disqus_thread" class="pb-4"></div>
+          <div id="disqus_thread"></div>
           <script>
               /**
               *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.

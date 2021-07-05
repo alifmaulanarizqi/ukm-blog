@@ -89,14 +89,25 @@ class PostController extends Controller
     public function updatePost(Request $request, $id) {
         abort_if(Gate::denies('post_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
 
-        $validated = $request->validate([
-            'title' => 'required|max:255',
-            'image' => 'mimes:jpg,jpeg,png',
-            'kategori_id' =>'required',
-            'slug' => 'required|alpha_dash|unique:posts',
-        ]);
+        $post = Post::find($id);
 
-        $update = Post::find($id)->update([
+        if($post->slug == $request->slug) {
+            $validated = $request->validate([
+                'title' => 'required|max:255',
+                'image' => 'mimes:jpg,jpeg,png',
+                'kategori_id' =>'required',
+                'slug' => 'required|alpha_dash',
+            ]);
+        } else {
+            $validated = $request->validate([
+                'title' => 'required|max:255',
+                'image' => 'mimes:jpg,jpeg,png',
+                'kategori_id' =>'required',
+                'slug' => 'required|alpha_dash|unique:posts',
+            ]);
+        }
+
+        $update = $post->update([
             'kategori_id' => $request->kategori_id,
             'title' => $request->title,
             'slug' => $request->slug,
