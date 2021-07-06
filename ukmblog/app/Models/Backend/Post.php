@@ -21,7 +21,8 @@ class Post extends Model
         'headline_utama',
         'headline_ukm',
         'tanggal',
-        'slug'
+        'slug',
+        'viewer'
     ];
 
     public function user() {

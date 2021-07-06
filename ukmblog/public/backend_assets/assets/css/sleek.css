@@ -11166,3 +11166,9 @@ html[dir="rtl"] .sidebar li > a .caret:before {
   height: 5rem;
   object-fit: cover;
 }
+
+.chart-pie {
+  position: relative;
+  height: 15rem;
+  width: 100%;
+}
