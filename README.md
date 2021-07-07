@@ -78,19 +78,19 @@ MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 
 
 ===== BEBERAPA AKUN YANG TERDAFTAR =====
-- Role: Developer atau pengawas
+1. Role: Developer atau pengawas
  - email: developer@email.com
  - password: password
 
-- Role: Ketua UKM 1
+2. Role: Ketua UKM 1
  - email: ketuaukm1@email.com
  - password: password
 
-- Role: Admin UKM 1
+3. Role: Admin UKM 1
  - email: adminukm1@email.com
  - password: password
 
-- Role: Anggota biasa UKM 1
+4. Role: Anggota biasa UKM 1
  - email: anggotaukm1@email.com
  - password: password
 
