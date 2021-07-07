@@ -17,6 +17,7 @@ Cara menjalankan aplikasi:
 8. Terdapat file '.env.example' di direktori 'C:\xampp\htdocs\ukm-blog\ukmblog', rename file tersebut menjadi '.env'
 9. Hapus semua code yang ada di file '.env' dan ganti dengan code berikut
 
+```
 APP_NAME=Laravel
 APP_ENV=local
 APP_KEY=base64:/dk6fRYigY/3SMVQKpxqYX/SdnpRYShlCbywFRKMpu0=
@@ -69,32 +70,34 @@ PUSHER_APP_CLUSTER=mt1
 MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
 MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 
+```
+
 10. Buka browser dan ketikan url 'http://127.0.0.1:8000/' atau jika tidak bisa gunakan url 'http://localhost/ukm-blog/ukmblog/public/'
 11. Jika terdapat error seperti "Generate Key", klik saja tombol "Generate Key" dan refresh halaman
 
 
 
 ===== BEBERAPA AKUN YANG TERDAFTAR =====
-Role: Developer atau pengawas
-email: developer@email.com
-password: password
+> Role: Developer atau pengawas
+> email: developer@email.com
+> password: password
 
-Role: Ketua UKM 1
-email: ketuaukm1@email.com
-password: password
+> Role: Ketua UKM 1
+> email: ketuaukm1@email.com
+> password: password
 
-Role: Admin UKM 1
-email: adminukm1@email.com
-password: password
+> Role: Admin UKM 1
+> email: adminukm1@email.com
+> password: password
 
-Role: Anggota biasa UKM 1
-email: anggotaukm1@email.com
-password: password
+> Role: Anggota biasa UKM 1
+> email: anggotaukm1@email.com
+> password: password
 
 
 
 ===== TES EMAIL =====
 Untuk mengetes email untuk keperluan kirim link reset password atau verifikasi email, kita menggunakan situs mailtrap ('https://mailtrap.io/')
 Gunakan akun berikut:
-email: ukmblog.5am@gmail.com
-password: password123
+> email: ukmblog.5am@gmail.com
+> password: password123
