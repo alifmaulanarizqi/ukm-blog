@@ -78,26 +78,26 @@ MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 
 
 ===== BEBERAPA AKUN YANG TERDAFTAR =====
-> Role: Developer atau pengawas
-> email: developer@email.com
-> password: password
+- Role: Developer atau pengawas
+ - email: developer@email.com
+ - password: password
 
-> Role: Ketua UKM 1
-> email: ketuaukm1@email.com
-> password: password
+- Role: Ketua UKM 1
+ - email: ketuaukm1@email.com
+ - password: password
 
-> Role: Admin UKM 1
-> email: adminukm1@email.com
-> password: password
+- Role: Admin UKM 1
+ - email: adminukm1@email.com
+ - password: password
 
-> Role: Anggota biasa UKM 1
-> email: anggotaukm1@email.com
-> password: password
+- Role: Anggota biasa UKM 1
+ - email: anggotaukm1@email.com
+ - password: password
 
 
 
 ===== TES EMAIL =====
 Untuk mengetes email untuk keperluan kirim link reset password atau verifikasi email, kita menggunakan situs mailtrap ('https://mailtrap.io/')
-Gunakan akun berikut:
-> email: ukmblog.5am@gmail.com
-> password: password123
+- Gunakan akun berikut:
+ - email: ukmblog.5am@gmail.com
+ - password: password123
