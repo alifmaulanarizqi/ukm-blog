@@ -51,6 +51,7 @@ class PostController extends Controller
         $post->user_id = Auth::id();
         $post->title = $request->title;
         $post->slug = $request->slug;
+        $post->viewer = 0;
         $post->konten = $request->konten;
         $post->headline_utama = $request->headline_utama;
         $post->headline_ukm = $request->headline_ukm;
