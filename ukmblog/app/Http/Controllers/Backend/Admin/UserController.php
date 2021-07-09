@@ -27,6 +27,7 @@ class UserController extends Controller
                         ->join('roles', 'role_user.role_id', 'roles.id')
                         ->select('users.id', 'users.name', 'users.profile_photo_path', 'users.email', 'roles.title')
                         ->where('ukm_id', Auth::user()->ukm_id)
+                        ->where('users.deleted_at', NULL)
                         ->get();
         $anggotas_in_trash = User::onlyTrashed()->where('ukm_id', Auth::user()->ukm_id)->get();
         return view('backend.user.anggota', compact('anggotas', 'anggotas_in_trash'));
