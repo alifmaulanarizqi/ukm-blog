@@ -9,7 +9,7 @@ Prasyarat menjalankan aplikasi ini:
 Cara menjalankan aplikasi:
 1. Download ZIP code
 2. Extract ZIP code ke direktori 'C:\xampp\htdocs'
-3. Buka phpmyadmin ('http://localhost/phpmyadmin/')
+3. Nyalakan service Apache dan MySQL di Xampp, lalu buka phpmyadmin ('http://localhost/phpmyadmin/')
 4. Buat database dengan nama 'ukmblog'
 5. Import SQL file yang memiliki nama 'ukmblog' di direktori 'C:\xampp\htdocs\ukm-blog\ukmblog' ke database yang baru dibuat
 6. Buka Command Prompt (cmd) di direktori 'C:\xampp\htdocs\ukm-blog\ukmblog'
@@ -72,8 +72,9 @@ MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 
 ```
 
-10. Buka browser dan ketikan url 'http://127.0.0.1:8000/' atau jika tidak bisa gunakan url 'http://localhost/ukm-blog/ukmblog/public/'
-11. Jika terdapat error seperti "Generate Key", klik saja tombol "Generate Key" dan refresh halaman
+10. Buka Command Prompt (cmd) di direktori 'C:\xampp\htdocs\ukm-blog\ukmblog' lalu ketikan perintah "php artisan serve"
+11. Buka browser dan ketikan url 'http://127.0.0.1:8000/' atau jika tidak bisa gunakan url 'http://localhost/ukm-blog/ukmblog/public/'
+12. Jika terdapat error seperti "Generate Key", klik saja tombol "Generate Key" dan refresh halaman
 
 
 
