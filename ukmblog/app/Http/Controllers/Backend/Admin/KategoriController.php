@@ -22,7 +22,7 @@ class KategoriController extends Controller
     public function index() {
         abort_if(Gate::denies('kategori_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
 
-        $kategoris = Kategori::where('ukm_id', Auth::user()->ukm_id)->get();
+        $kategoris = Kategori::where('ukm_id', Auth::user()->ukm_id)->latest()->get();
         $kategoris_in_trash = Kategori::onlyTrashed()->where('ukm_id', Auth::user()->ukm_id)->get();
         return view('backend.kategori.index', compact('kategoris', 'kategoris_in_trash'));
     }

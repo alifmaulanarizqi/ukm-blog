@@ -98,7 +98,7 @@ MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
 
 
 ===== TES EMAIL =====
-Untuk mengetes email untuk keperluan kirim link reset password atau verifikasi email, kita menggunakan situs mailtrap ('https://mailtrap.io/')
-- Gunakan akun berikut:
+\nUntuk mengetes email untuk keperluan kirim link reset password atau verifikasi email, kita menggunakan situs mailtrap ('https://mailtrap.io/')
+\nGunakan akun berikut:
  - email: ukmblog.5am@gmail.com
  - password: password123

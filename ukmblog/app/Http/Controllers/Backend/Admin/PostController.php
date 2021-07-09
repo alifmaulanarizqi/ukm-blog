@@ -23,7 +23,7 @@ class PostController extends Controller
     public function index() {
         abort_if(Gate::denies('post_access'), Response::HTTP_FORBIDDEN, 'Anda Tidak Punya Akses Ke Halaman Ini');
 
-        $posts = Post::where('ukm_id', Auth::user()->ukm_id)->get();
+        $posts = Post::where('ukm_id', Auth::user()->ukm_id)->latest()->get();
         $posts_in_trash = Post::onlyTrashed()->where('ukm_id', Auth::user()->ukm_id)->get();
         return view('backend.post.index', compact('posts', 'posts_in_trash'));
     }
