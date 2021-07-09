@@ -98,7 +98,7 @@
                     <td>{{ $row->title }}</td>
                     <td>{{ !empty($row->kategori) ? $row->kategori->kategori : '[deleted]' }}</td>
                     <td><img style="width: 5rem; height: 5rem;" src="{{ (!empty($row->image)) ? asset($row->image) : url('image/no_image.jpg') }}" alt=""></td>
-                    <td>{!! $row->konten !!}</td>
+                    <td>{!! Str::limit($row->konten, 100) !!}</td>
                     <td>{{ $row->tanggal }}</td>
                     <td>
                       <a href="{{ route('restore.post', $row->id) }}" class="btn btn-info btn-sm">Restore</a>

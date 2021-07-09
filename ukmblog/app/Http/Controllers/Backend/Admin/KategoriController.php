@@ -117,9 +117,13 @@ class KategoriController extends Controller
 
         $id = $_POST['deleteId'];
         $post = Post::onlyTrashed()->where('kategori_id', $id)->first();
-        if($post->image != NULL)
-            unlink($post->image);
-        $delete_post = $post->forceDelete();
+
+        if($post != NULL) {
+            if($post->image != NULL)
+                unlink($post->image);
+            $delete_post = $post->forceDelete();
+        }
+
         $delete_kategori = Kategori::onlyTrashed()->find($id)->forceDelete();
 
         $notif = array(
